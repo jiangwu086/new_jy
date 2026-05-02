@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "安全警示服务",
+  "navigationBarBackgroundColor": "#3b82f6",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "skeleton": "/components/skeleton/skeleton"
+  }
+}

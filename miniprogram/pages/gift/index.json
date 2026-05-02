@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "积分兑换",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "skeleton": "/components/skeleton/skeleton"
+  }
+}

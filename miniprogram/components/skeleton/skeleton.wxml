@@ -1,0 +1,58 @@
+<view wx:if="{{show}}">
+
+  <!-- ── home：首页附近教育点 3 张卡片 ── -->
+  <view wx:if="{{type === 'home'}}" class="ske-wrap">
+    <view class="ske-card" wx:for="{{[1,2,3]}}" wx:key="*this">
+      <view class="ske-card-body">
+        <view class="ske ske-title"></view>
+        <view class="ske ske-sub"></view>
+      </view>
+      <view class="ske ske-badge"></view>
+    </view>
+  </view>
+
+  <!-- ── stats-list：统计行 + 5 条列表 ── -->
+  <view wx:if="{{type === 'stats-list'}}" class="ske-wrap">
+    <!-- 统计行 -->
+    <view class="ske-stats">
+      <view class="ske-stat-item" wx:for="{{[1,2,3]}}" wx:key="*this">
+        <view class="ske ske-stat-num"></view>
+        <view class="ske ske-stat-label"></view>
+      </view>
+    </view>
+    <!-- 列表行 -->
+    <view class="ske-list-row" wx:for="{{[1,2,3,4,5]}}" wx:key="*this">
+      <view class="ske ske-dot"></view>
+      <view class="ske-list-body">
+        <view class="ske ske-row-title"></view>
+        <view class="ske ske-row-sub"></view>
+      </view>
+      <view class="ske ske-score"></view>
+    </view>
+  </view>
+
+  <!-- ── gift：礼品卡片 2×2 ── -->
+  <view wx:if="{{type === 'gift'}}" class="ske-wrap ske-gift-grid">
+    <view class="ske-gift-card" wx:for="{{[1,2,3,4]}}" wx:key="*this">
+      <view class="ske ske-gift-img"></view>
+      <view class="ske-gift-info">
+        <view class="ske ske-gift-name"></view>
+        <view class="ske ske-gift-desc"></view>
+        <view class="ske ske-gift-btn"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ── list：积分流水 / 兑换记录 8 行 ── -->
+  <view wx:if="{{type === 'list'}}" class="ske-wrap">
+    <view class="ske-list-row" wx:for="{{[1,2,3,4,5,6,7,8]}}" wx:key="*this">
+      <view class="ske ske-icon-circle"></view>
+      <view class="ske-list-body">
+        <view class="ske ske-row-title"></view>
+        <view class="ske ske-row-sub"></view>
+      </view>
+      <view class="ske ske-amount"></view>
+    </view>
+  </view>
+
+</view>

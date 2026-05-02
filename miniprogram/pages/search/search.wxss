@@ -1,0 +1,101 @@
+.container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.search-header {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  background-color: #fff;
+  border-bottom: 2rpx solid #f1f5f9;
+}
+
+.search-box {
+  flex: 1;
+  background-color: #f1f5f9;
+  height: 64rpx;
+  border-radius: 32rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+}
+
+.search-input {
+  flex: 1;
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.cancel-text {
+  font-size: 30rpx;
+  color: #3b82f6;
+  margin-left: 30rpx;
+}
+
+.search-results {
+  padding: 30rpx;
+}
+
+.point-card {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.02);
+}
+
+.point-info {
+  flex: 1;
+}
+
+.point-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.point-addr {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.point-status {
+  font-size: 22rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 8rpx;
+}
+
+.point-status.open {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+/* ── 空状态 ─────────────────────────────────────────── */
+.empty-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80rpx 40rpx 100rpx;
+}
+.empty-img {
+  width: 180rpx;
+  height: 180rpx;
+  margin-bottom: 28rpx;
+}
+.empty-text {
+  font-size: 30rpx;
+  color: #999;
+  font-weight: 500;
+  margin-bottom: 12rpx;
+}
+.empty-sub {
+  font-size: 24rpx;
+  color: #c8c9cc;
+  text-align: center;
+}

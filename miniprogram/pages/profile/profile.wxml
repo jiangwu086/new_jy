@@ -1,0 +1,145 @@
+<view class="container" wx:if="{{isLogin}}">
+  <!-- 个人头部 -->
+  <view class="profile-header">
+    <view class="profile-avatar" bindtap="changeAvatar">
+      <image wx:if="{{avatarUrl}}" src="{{avatarUrl}}" class="avatar-img" mode="aspectFill"/>
+      <view wx:else class="avatar-placeholder">
+        <text class="avatar-letter">{{avatarLetter}}</text>
+      </view>
+      <!-- 右下角小相机角标，提示可点击 -->
+      <view class="avatar-edit-badge">
+        <view class="cam-body"><view class="cam-lens"></view></view>
+      </view>
+    </view>
+    <view class="profile-info">
+      <view class="profile-name">{{realName || nickName || '骑手用户'}}</view>
+      <view class="profile-phone" bindtap="showChangePhone">
+        <text>{{phone || '未绑定手机号'}}</text>
+        <text class="phone-edit-hint">换绑</text>
+      </view>
+      <!-- 认证状态标签 -->
+      <view class="auth-badge verified" wx:if="{{verifyStatus === 2}}">
+        <svg width="13" height="13" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg" style="margin-right:4rpx;vertical-align:middle">
+          <circle cx="6.5" cy="6.5" r="6" fill="#10b981"/>
+          <polyline points="3.5,6.5 5.5,8.5 9.5,4.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <text>已实名认证</text>
+      </view>
+      <view class="auth-badge pending" wx:elif="{{verifyStatus === 1}}" bindtap="goToAuth">
+        <svg width="13" height="13" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg" style="margin-right:4rpx;vertical-align:middle">
+          <circle cx="6.5" cy="6.5" r="6" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+          <circle cx="6.5" cy="6.5" r="1.5" fill="#f59e0b"/>
+          <line x1="6.5" y1="6.5" x2="4.2" y2="4.5" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="6.5" y1="6.5" x2="8.5" y2="6.5" stroke="#f59e0b" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        <text>审核中</text>
+      </view>
+      <view class="auth-badge rejected" wx:elif="{{verifyStatus === 3}}" bindtap="goToAuth">
+        <svg width="13" height="13" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg" style="margin-right:4rpx;vertical-align:middle">
+          <circle cx="6.5" cy="6.5" r="6" fill="#ef4444"/>
+          <line x1="4.5" y1="4.5" x2="8.5" y2="8.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="8.5" y1="4.5" x2="4.5" y2="8.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <text>审核未通过</text>
+      </view>
+      <view class="auth-badge unverified" wx:else bindtap="goToAuth">
+        <svg width="13" height="13" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg" style="margin-right:4rpx;vertical-align:middle">
+          <circle cx="6.5" cy="6.5" r="6" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+          <line x1="6.5" y1="3.5" x2="6.5" y2="7" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="6.5" cy="9" r="0.8" fill="#94a3b8"/>
+        </svg>
+        <text>去认证</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 积分卡片 -->
+  <view class="profile-score-card">
+    <view class="psc-item" bindtap="goToPoints">
+      <text class="psc-num">{{totalPoints}}</text>
+      <text class="psc-label">累计积分</text>
+    </view>
+    <view class="psc-divider"></view>
+    <view class="psc-item" bindtap="goToPoints">
+      <text class="psc-num">{{usablePoints}}</text>
+      <text class="psc-label">可用积分</text>
+    </view>
+    <view class="psc-divider"></view>
+    <view class="psc-item" bindtap="goToGift">
+      <text class="psc-num" style="font-size:32rpx">兑换</text>
+      <text class="psc-label">积分礼品</text>
+    </view>
+  </view>
+
+  <!-- 菜单列表 -->
+  <view class="menu-list">
+    <view class="menu-item" bindtap="goToRecord">
+      <view class="menu-left">
+        <icon type="waiting" size="18" color="#3b82f6" class="menu-icon"/>
+        <text>打卡记录</text>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+    <view class="menu-item" bindtap="goToPoints">
+      <view class="menu-left">
+        <view class="menu-icon coin-icon">¥</view>
+        <text>积分明细</text>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+    <view class="menu-item" data-type="2" bindtap="goToList">
+      <view class="menu-left">
+        <icon type="success_no_circle" size="18" color="#3b82f6" class="menu-icon"/>
+        <text>理赔指南</text>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+    <view class="menu-item" data-type="1" bindtap="goToList">
+      <view class="menu-left">
+        <icon type="info" size="18" color="#3b82f6" class="menu-icon"/>
+        <text>政策说明</text>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+    <view class="menu-item" data-type="3" bindtap="goToList">
+      <view class="menu-left">
+        <icon type="safe_success" size="18" color="#3b82f6" class="menu-icon"/>
+        <text>警示案例</text>
+      </view>
+      <view class="menu-arrow">›</view>
+    </view>
+  </view>
+
+  <view class="logout-box">
+    <button class="logout-btn" bindtap="logout">退出登录</button>
+  </view>
+
+  <!-- 换绑手机号弹窗 -->
+  <view class="modal-mask" wx:if="{{showPhoneModal}}" bindtap="hideChangePhone">
+    <view class="modal-box" catchtap="">
+      <view class="modal-title">更换手机号</view>
+
+      <!-- 手机号输入框 -->
+      <view class="modal-input-box">
+        <input class="modal-inp" placeholder="请输入新手机号" placeholder-class="modal-inp-ph"
+               type="number" maxlength="11" value="{{newPhone}}" bindinput="onNewPhoneInput"/>
+      </view>
+
+      <!-- 验证码输入框 -->
+      <view class="modal-input-box" style="margin-top:20rpx;">
+        <input class="modal-inp" placeholder="请输入验证码" placeholder-class="modal-inp-ph"
+               type="number" maxlength="6" value="{{newPhoneCode}}" bindinput="onNewCodeInput"/>
+        <view class="modal-code-txt {{phoneCdSecs>0?'modal-code-disabled':''}}"
+              bindtap="sendNewPhoneCode">
+          {{phoneCdSecs>0 ? phoneCdSecs+'s后重发' : '获取验证码'}}
+        </view>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="modal-actions">
+        <button class="modal-cancel" bindtap="hideChangePhone">取消</button>
+        <button class="modal-confirm" bindtap="confirmChangePhone">确认换绑</button>
+      </view>
+    </view>
+  </view>
+</view>

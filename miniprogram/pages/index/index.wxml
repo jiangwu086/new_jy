@@ -1,0 +1,89 @@
+<view class="container">
+  <!-- 顶部区域 -->
+  <view class="home-header">
+    <view class="home-search" bindtap="goToSearch">
+      <icon type="search" size="14" color="#999"/>
+      <text>搜索教育点位</text>
+    </view>
+  </view>
+
+  <!-- Banner -->
+  <view class="home-banner">
+    <image class="banner-image" src="/images/home_banner_ai.png" mode="aspectFill"></image>
+  </view>
+
+  <!-- 实名认证提醒 -->
+  <view class="auth-reminder" wx:if="{{isLogin && !isVerified}}" bindtap="goToAuth">
+    <view class="auth-reminder-left">
+      <view class="auth-reminder-title">尚未实名认证</view>
+      <view class="auth-reminder-desc">打卡、积分兑换前需完成人脸识别核验</view>
+    </view>
+    <view class="auth-reminder-action">去认证</view>
+  </view>
+
+  <!-- 功能入口 -->
+  <view class="home-grid">
+    <view class="grid-item" bindtap="goToCheckin">
+      <view class="grid-icon-box scan-icon">
+        <image class="grid-icon-img" src="/images/scan_color.png" mode="aspectFit"></image>
+      </view>
+      <text>扫码打卡</text>
+    </view>
+    <view class="grid-item" bindtap="goToMap">
+      <view class="grid-icon-box map-icon">
+        <image class="grid-icon-img" src="/images/map_color.png" mode="aspectFit"></image>
+      </view>
+      <text>教育点导航</text>
+    </view>
+    <view class="grid-item" bindtap="goToRecord">
+      <view class="grid-icon-box record-icon">
+        <image class="grid-icon-img" src="/images/record_color.png" mode="aspectFit"></image>
+      </view>
+      <text>我的记录</text>
+    </view>
+    <view class="grid-item" bindtap="goToGift">
+      <view class="grid-icon-box gift-icon">
+        <image class="grid-icon-img" src="/images/gift_color.png" mode="aspectFit"></image>
+      </view>
+      <text>积分兑换</text>
+    </view>
+  </view>
+
+  <!-- 公告 -->
+  <view class="home-notice" bindtap="goToNotice">
+    <view class="notice-tag">公告</view>
+    <text class="notice-text">济南市历下区新增5个安全教育点位，欢迎前往打卡体验...</text>
+  </view>
+
+  <!-- 附近教育点 -->
+  <view class="home-section">
+    <view class="section-header">
+      <text class="section-title">附近教育点</text>
+      <text class="section-more" bindtap="goToMap">查看全部 ></text>
+    </view>
+
+    <!-- 骨架屏 -->
+    <skeleton show="{{loading}}" type="home"></skeleton>
+
+    <!-- 有数据 -->
+    <block wx:if="{{!loading && nearbyLocations.length > 0}}">
+      <view class="point-card" wx:for="{{nearbyLocations}}" wx:key="id"
+            bindtap="goToLocationDetail" data-id="{{item.id}}">
+        <view class="point-info">
+          <view class="point-name">{{item.name}}</view>
+          <view class="point-addr">{{item.address || '暂无地址信息'}}</view>
+        </view>
+        <view class="point-status {{item.isOpen ? 'open' : 'closed'}}">
+          {{item.isOpen ? '开放中' : '休息中'}}
+        </view>
+      </view>
+    </block>
+
+    <!-- 空状态 -->
+    <view class="empty-box" wx:if="{{!loading && nearbyLocations.length === 0}}">
+      <image class="empty-img" src="/images/empty_location.svg" mode="aspectFit"/>
+      <view class="empty-text">暂无附近教育点</view>
+      <view class="empty-sub">可前往地图页查看全部点位</view>
+    </view>
+  </view>
+</view>

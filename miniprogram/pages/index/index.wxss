@@ -1,0 +1,207 @@
+.container {
+  padding-bottom: 40rpx;
+}
+
+/* Header */
+.home-header {
+  background-color: #3b82f6;
+  padding: 20rpx 30rpx;
+}
+.home-search {
+  background-color: #ffffff;
+  border-radius: 30rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+.home-search icon {
+  margin-right: 10rpx;
+}
+
+/* Banner */
+.home-banner {
+  margin: 30rpx;
+  border-radius: 24rpx;
+  box-shadow: 0 16rpx 30rpx rgba(37, 99, 235, 0.3);
+  position: relative;
+  overflow: hidden;
+  height: 260rpx;
+}
+.banner-image {
+  width: 100%;
+  height: 100%;
+}
+
+.auth-reminder {
+  margin: -6rpx 30rpx 34rpx;
+  padding: 24rpx 26rpx;
+  border-radius: 18rpx;
+  background: #fff7ed;
+  border: 2rpx solid #fed7aa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.auth-reminder-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.auth-reminder-title {
+  font-size: 30rpx;
+  color: #9a3412;
+  font-weight: 700;
+  margin-bottom: 8rpx;
+}
+
+.auth-reminder-desc {
+  font-size: 24rpx;
+  color: #c2410c;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.auth-reminder-action {
+  margin-left: 20rpx;
+  padding: 10rpx 20rpx;
+  border-radius: 999rpx;
+  background: #f97316;
+  color: #ffffff;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+/* Grid */
+.home-grid {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40rpx;
+  margin-bottom: 40rpx;
+}
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150rpx;
+}
+.grid-icon-box {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 30rpx;
+  margin-bottom: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  box-shadow: 0 10rpx 24rpx rgba(15, 23, 42, 0.08);
+}
+.grid-icon-img {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.grid-item text {
+  font-size: 24rpx;
+  color: #333;
+  margin-top: 8rpx;
+}
+
+/* Notice */
+.home-notice {
+  margin: 0 30rpx 40rpx;
+  background-color: #ffffff;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.notice-tag {
+  background-color: #fee2e2;
+  color: #ef4444;
+  font-size: 20rpx;
+  padding: 4rpx 10rpx;
+  border-radius: 6rpx;
+  margin-right: 16rpx;
+  font-weight: bold;
+}
+.notice-text {
+  font-size: 24rpx;
+  color: #666;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Section */
+.home-section {
+  padding: 0 30rpx;
+}
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+.section-more {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* Point Card */
+.point-card {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.point-info {
+  flex: 1;
+}
+.point-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+.point-addr {
+  font-size: 24rpx;
+  color: #666;
+}
+.point-status {
+  font-size: 22rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 8rpx;
+}
+.point-status.open {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+.point-status.closed {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+}
+
+/* 空状态 */
+.empty-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 0 40rpx;
+}
+.empty-text { font-size: 28rpx; color: #999; margin-bottom: 8rpx; }
+.empty-sub  { font-size: 24rpx; color: #bbb; }
+.empty-img { width: 160rpx; height: 160rpx; margin-bottom: 20rpx; opacity: 0.85; }

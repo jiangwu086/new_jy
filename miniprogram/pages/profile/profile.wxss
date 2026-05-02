@@ -1,0 +1,361 @@
+.container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.profile-header {
+  background: linear-gradient(180deg, #3b82f6 0%, #60a5fa 100%);
+  padding: 40rpx 40rpx 100rpx;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.profile-avatar {
+  position: relative;        /* 给右下角相机角标定位 */
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid rgba(255, 255, 255, 0.4);
+  box-sizing: border-box;    /* width 包含 border，避免 image 100% 之后差出 border 大小的白边 */
+  overflow: visible;         /* 让角标可以稍微露出 */
+  margin-right: 30rpx;
+  background-color: #fff;
+}
+
+/* 头像里的图片/占位铺满父级、圆形剪裁 */
+.profile-avatar .avatar-img,
+.profile-avatar .avatar-placeholder {
+  display: block;            /* 去掉 inline 默认 baseline 间隙 */
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* 右下角相机角标，提示头像可点击 */
+.avatar-edit-badge {
+  position: absolute;
+  right: -2rpx;
+  bottom: -2rpx;
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  background: #3b82f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3rpx solid #fff;
+  box-shadow: 0 2rpx 6rpx rgba(0,0,0,0.15);
+}
+/* 相机机身（白色描边方框 + 顶部小凸起） */
+.cam-body {
+  position: relative;
+  width: 18rpx;
+  height: 13rpx;
+  border: 2rpx solid #fff;
+  border-radius: 3rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cam-body::before {
+  content: '';
+  position: absolute;
+  top: -5rpx;
+  left: 4rpx;
+  width: 6rpx;
+  height: 3rpx;
+  background: #fff;
+  border-radius: 1rpx 1rpx 0 0;
+}
+/* 镜头：白色实心小圆点 */
+.cam-lens {
+  width: 5rpx;
+  height: 5rpx;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+}
+
+.profile-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 12rpx;
+}
+
+.profile-id {
+  font-size: 26rpx;
+  opacity: 0.9;
+}
+
+.profile-score-card {
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  margin: -60rpx 30rpx 30rpx;
+  padding: 40rpx 0;
+  display: flex;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 2;
+}
+
+.psc-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.psc-num {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #3b82f6;
+  margin-bottom: 8rpx;
+}
+
+.psc-label {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.psc-divider {
+  width: 2rpx;
+  background-color: #f1f5f9;
+}
+
+.menu-list {
+  background-color: #fff;
+  border-radius: 20rpx;
+  margin: 0 30rpx 30rpx;
+  padding: 0 30rpx;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  border-bottom: 2rpx solid #f8fafc;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.menu-icon {
+  margin-right: 20rpx;
+}
+
+/* 积分明细的金币图标：实心橙色圆 + 白色¥，与其他菜单实心 icon 风格一致 */
+.coin-icon {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  background: #f59e0b;
+  color: #fff;
+  font-size: 22rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.menu-right {
+  display: flex;
+  align-items: center;
+}
+
+.menu-badge {
+  background-color: #ef4444;
+  color: #fff;
+  font-size: 22rpx;
+  padding: 2rpx 12rpx;
+  border-radius: 20rpx;
+  margin-right: 16rpx;
+}
+
+.menu-arrow {
+  color: #ccc;
+  font-size: 30rpx;
+  font-family: monospace;
+}
+
+.logout-box {
+  padding: 40rpx 30rpx;
+}
+
+.logout-btn {
+  background-color: #ffffff;
+  color: #ef4444;
+  font-size: 32rpx;
+  height: 90rpx;
+  border-radius: 20rpx;
+  border: 2rpx solid #fee2e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+.logout-btn::after {
+  display: none;
+}
+
+.avatar-placeholder {
+  /* 宽高交给父级 .profile-avatar 控制（width:100%; height:100%）*/
+  border-radius: 50%;
+  background: #2563eb;
+  display: flex; align-items: center; justify-content: center;
+}
+.avatar-letter {
+  color: #fff;
+  font-size: 46rpx;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+}
+
+/* 手机号 */
+.profile-phone {
+  font-size: 24rpx;
+  color: rgba(255,255,255,0.85);
+  margin-top: 4rpx;
+  margin-bottom: 6rpx;
+  letter-spacing: 1rpx;
+}
+/* ── 认证状态 Badge ──────────────────────────────────── */
+.auth-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 14rpx;
+  padding: 8rpx 22rpx;
+  border-radius: 30rpx;
+  font-size: 22rpx;
+  font-weight: 600;
+  letter-spacing: 0.5rpx;
+}
+.auth-badge.verified {
+  background: #d1fae5; color: #059669; border: 1.5rpx solid #6ee7b7;
+}
+.auth-badge.pending {
+  background: #fef3c7; color: #b45309; border: 1.5rpx solid #fcd34d;
+}
+.auth-badge.rejected {
+  background: #fee2e2; color: #dc2626; border: 1.5rpx solid #fca5a5;
+}
+.auth-badge.unverified {
+  background: #eff6ff; color: #2563eb; border: 1.5rpx solid #93c5fd;
+}
+
+.loading-tip { text-align: center; color: #999; padding: 40rpx; }
+
+/* ── 手机号换绑 ──────────────────────────────────────── */
+.profile-phone {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+.phone-edit-hint {
+  font-size: 20rpx;
+  color: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.18);
+  padding: 4rpx 14rpx;
+  border-radius: 20rpx;
+  border: 1rpx solid rgba(255,255,255,0.3);
+}
+.modal-mask {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-box {
+  background: #fff;
+  border-radius: 32rpx;
+  padding: 52rpx 40rpx 44rpx;
+  width: 640rpx;
+  box-sizing: border-box;
+}
+.modal-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #111;
+  text-align: center;
+  margin-bottom: 44rpx;
+}
+/* 输入框 */
+.modal-input-box {
+  display: flex;
+  align-items: stretch;         /* 子元素都拉伸到父级高度，便于子元素自身 flex 居中 */
+  height: 100rpx;
+  background: #F6F7F9;
+  border-radius: 18rpx;
+  padding: 0 26rpx;
+  border: 2rpx solid #EEEEEE;
+  box-sizing: border-box;
+}
+.modal-inp {
+  flex: 1;
+  height: 100%;
+  font-size: 30rpx;
+  color: #111;
+  background: transparent;
+}
+.modal-inp-ph {
+  color: #C8C9CC;
+  font-size: 28rpx;
+}
+/* 验证码按钮 — view 元素 + 自身 flex 居中文字，与父级 input 高度一致 */
+.modal-code-txt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 100%;                 /* 跟 .modal-input-box 一样高 (align-items: stretch 已经撑了) */
+  margin-left: 16rpx;
+  padding-left: 20rpx;
+  border-left: 2rpx solid #E5E7EB;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #1677FF;
+  white-space: nowrap;
+}
+.modal-code-disabled { color: #BBBBBB; }
+/* 底部按钮 */
+.modal-actions {
+  display: flex;
+  gap: 24rpx;
+  margin-top: 44rpx;
+}
+.modal-cancel {
+  flex: 1; height: 90rpx; line-height: 90rpx;
+  border-radius: 18rpx;
+  font-size: 30rpx; font-weight: 600;
+  background: #F6F7F9; color: #666;
+  border: none; padding: 0; margin: 0;
+  text-align: center;
+}
+.modal-cancel::after { display: none; }
+.modal-confirm {
+  flex: 1; height: 90rpx; line-height: 90rpx;
+  border-radius: 18rpx;
+  font-size: 30rpx; font-weight: 600;
+  background: #1677FF; color: #fff;
+  border: none; padding: 0; margin: 0;
+  text-align: center;
+}
+.modal-confirm::after { display: none; }

@@ -1,0 +1,97 @@
+<view class="container" wx:if="{{isLogin}}">
+  <!-- 积分概览 -->
+  <view class="record-stats">
+    <view class="stat-item">
+      <text class="stat-num">{{totalPoints}}</text>
+      <text class="stat-label">累计积分</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-num">{{monthCheckins}}</text>
+      <text class="stat-label">本月打卡</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-num">{{redeemCount}}</text>
+      <text class="stat-label">核销次数</text>
+    </view>
+  </view>
+
+  <!-- Tab 切换 -->
+  <view class="record-list-header">
+    <view class="section-title">{{currentTab === 'checkin' ? '打卡明细' : '积分明细'}}</view>
+    <view class="filter-tabs">
+      <view class="filter-tab {{currentTab === 'checkin' ? 'active' : ''}}"
+            data-tab="checkin" bindtap="switchTab">打卡流水</view>
+      <view class="filter-tab {{currentTab === 'points' ? 'active' : ''}}"
+            data-tab="points" bindtap="switchTab">积分流水</view>
+    </view>
+  </view>
+
+  <!-- 打卡记录列表 -->
+  <view class="record-list" wx:if="{{currentTab === 'checkin'}}">
+    <view class="record-item record-item-{{item.statusType}}" wx:for="{{records}}" wx:key="id">
+      <view class="record-date-badge">{{item.dateBadge}}</view>
+      <view class="record-detail">
+        <view class="record-name">
+          {{item.name}}
+          <text wx:if="{{item.statusLabel}}"
+                class="status-pill status-pill-{{item.statusType}}">{{item.statusLabel}}</text>
+        </view>
+        <view class="record-time">{{item.time}} | {{item.period}} 周期</view>
+        <view class="record-remark" wx:if="{{item.rejectRemark}}">驳回原因：{{item.rejectRemark}}</view>
+      </view>
+      <view class="record-score record-score-{{item.statusType}}">
+        <block wx:if="{{item.statusType === 'rejected'}}">已扣回</block>
+        <block wx:else>+{{item.scoreDisplay}}</block>
+      </view>
+    </view>
+    <view class="empty-box" wx:if="{{records.length === 0 && !loading}}">
+      <view class="empty-icon">
+        <!-- 打卡日历插画 -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="160" height="160">
+          <rect x="10" y="20" width="100" height="88" rx="10" fill="#e0eaff"/>
+          <rect x="10" y="20" width="100" height="28" rx="10" fill="#3b82f6"/>
+          <rect x="20" y="58" width="20" height="20" rx="4" fill="#93c5fd"/>
+          <rect x="50" y="58" width="20" height="20" rx="4" fill="#93c5fd"/>
+          <rect x="80" y="58" width="20" height="20" rx="4" fill="#93c5fd"/>
+          <rect x="20" y="86" width="20" height="14" rx="4" fill="#bfdbfe"/>
+          <rect x="50" y="86" width="20" height="14" rx="4" fill="#bfdbfe"/>
+          <circle cx="85" cy="93" r="18" fill="#10b981"/>
+          <polyline points="76,93 82,99 95,86" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <rect x="35" y="10" width="8" height="18" rx="4" fill="#1d4ed8"/>
+          <rect x="77" y="10" width="8" height="18" rx="4" fill="#1d4ed8"/>
+        </svg>
+      </view>
+      <view class="empty-title">还没有打卡记录</view>
+      <view class="empty-sub">到教育点现场扫码打卡，积累积分兑换礼品</view>
+    </view>
+  </view>
+
+  <!-- 积分流水列表 -->
+  <view class="record-list" wx:if="{{currentTab === 'points'}}">
+    <view class="record-item" wx:for="{{pointsLogs}}" wx:key="id">
+      <view class="record-date-badge" style="background:#f0f4ff;color:#3b82f6;font-size:20rpx;">{{item.typeLabel}}</view>
+      <view class="record-detail">
+        <view class="record-name">{{item.remark || item.typeLabel}}</view>
+        <view class="record-time">{{item.date}}</view>
+      </view>
+      <view class="record-score" style="color:{{item.amount > 0 ? '#10b981' : '#ef4444'}}">
+        {{item.amountText}}
+      </view>
+    </view>
+    <view class="empty-box" wx:if="{{pointsLogs.length === 0 && !loading}}">
+      <view class="empty-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="140" height="140">
+          <circle cx="60" cy="60" r="46" fill="#fef3c7"/>
+          <circle cx="60" cy="60" r="34" fill="#fbbf24"/>
+          <text x="60" y="72" font-size="36" text-anchor="middle" fill="#fff" font-weight="bold">¥</text>
+        </svg>
+      </view>
+      <view class="empty-title">暂无积分流水</view>
+      <view class="empty-sub">打卡和兑换操作后积分变动将在此显示</view>
+    </view>
+  </view>
+
+  <skeleton show="{{loading}}" type="stats-list"></skeleton>
+</view>

@@ -1,0 +1,14 @@
+<view class="container">
+  <view class="article-header">
+    <view class="article-title">{{article.title}}</view>
+    <view class="article-meta">
+      <text class="article-date">发布时间: {{article.date}}</text>
+      <text class="article-author">来源: 运营中心</text>
+    </view>
+  </view>
+  
+  <view class="article-body">
+    <!-- 使用 rich-text 渲染富文本内容 -->
+    <rich-text nodes="{{article.content}}"></rich-text>
+  </view>
+</view>

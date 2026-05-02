@@ -1,0 +1,350 @@
+/* ─────────────────────────────────────────────────────
+   登录页 — 严格 8rpx 网格 · 视觉对齐 · 现代极简
+   设计规范：
+     间距：8 / 16 / 24 / 32 / 40 / 48 / 56 / 64
+     卡片左右内边距：48rpx
+     主区块垂直间距：48rpx
+     圆角：复选框 8 / 输入框 24 / 卡片顶部 40 / 按钮全圆
+─────────────────────────────────────────────────────── */
+
+page { background: #ffffff; }
+
+.page {
+  min-height: 100vh;
+  position: relative;
+  background: #ffffff;
+}
+
+/* ── Hero 区 ───────────────────────────────────────── */
+.hero-wrap {
+  position: relative;
+  width: 100%;
+  height: 480rpx;
+  overflow: hidden;
+}
+.hero {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.hero-mask-top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 200rpx;
+  background: linear-gradient(180deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0) 100%);
+  pointer-events: none;
+}
+.hero-mask-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120rpx;
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+  pointer-events: none;
+}
+
+/* ── 自定义导航栏 ─────────────────────────────────── */
+.custom-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  height: 88rpx;
+  padding: 0 24rpx;
+  box-sizing: content-box;
+}
+.custom-nav-back {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.28);
+}
+.back-arrow {
+  width: 16rpx;
+  height: 16rpx;
+  border-left: 4rpx solid #ffffff;
+  border-bottom: 4rpx solid #ffffff;
+  transform: rotate(45deg);
+  margin-left: 6rpx;
+  box-sizing: border-box;
+}
+
+/* ── 白卡 ─────────────────────────────────────────── */
+.card {
+  position: relative;
+  z-index: 2;
+  margin-top: -64rpx;
+  border-radius: 40rpx 40rpx 0 0;
+  background: #ffffff;
+  padding: 24rpx 48rpx 0;
+  min-height: calc(100vh - 416rpx);
+  box-sizing: border-box;
+  box-shadow: 0 -8rpx 24rpx rgba(15, 23, 42, 0.04);
+}
+
+/* 顶部小拖把 */
+.card-handle {
+  width: 64rpx;
+  height: 6rpx;
+  border-radius: 3rpx;
+  background: #E5E7EB;
+  margin: 0 auto 32rpx;
+}
+
+/* ── 标题区 ───────────────────────────────────────── */
+.card-head {
+  text-align: center;
+  margin-bottom: 56rpx;
+}
+.card-title {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #0F172A;
+  letter-spacing: -1rpx;
+  line-height: 1.2;
+}
+.card-subtitle {
+  font-size: 26rpx;
+  color: #94A3B8;
+  margin-top: 12rpx;
+  line-height: 1.5;
+}
+
+/* ── 下划线 Tab ──────────────────────────────────── */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 64rpx;
+  margin-bottom: 56rpx;
+}
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+.tab-label {
+  font-size: 30rpx;
+  color: #94A3B8;
+  font-weight: 500;
+  line-height: 1.5;
+  transition: color 0.2s;
+}
+.tab-bar {
+  width: 0;
+  height: 6rpx;
+  border-radius: 3rpx;
+  background: #1677FF;
+  margin-top: 12rpx;
+  transition: width 0.25s ease;
+}
+.tab-active .tab-label {
+  color: #0F172A;
+  font-weight: 700;
+}
+.tab-active .tab-bar {
+  width: 48rpx;
+}
+
+/* ── 面板 ────────────────────────────────────────── */
+.panel { padding-bottom: 0; }
+
+/* ── 通用按钮 ─────────────────────────────────────── */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 96rpx;
+  line-height: 96rpx;
+  border-radius: 48rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  letter-spacing: 1rpx;
+  border: none;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.btn::after { display: none; }
+
+.btn-wx {
+  background: #07C160;
+  color: #ffffff;
+  width: 100% !important;
+  box-shadow: 0 8rpx 20rpx rgba(7, 193, 96, 0.22);
+}
+.btn-blue {
+  background: #1677FF;
+  color: #ffffff;
+  margin-top: 40rpx;
+  box-shadow: 0 8rpx 20rpx rgba(22, 119, 255, 0.22);
+}
+.btn-wx[disabled],
+.btn-blue[disabled] {
+  background: #CBD5E1 !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+.btn-loading { opacity: 0.7; }
+
+.btn-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.spin {
+  width: 32rpx;
+  height: 32rpx;
+  border: 4rpx solid rgba(255,255,255,0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  margin-right: 16rpx;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── 微信按钮下方提示 ────────────────────────────── */
+.hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24rpx;
+  font-size: 24rpx;
+  color: #94A3B8;
+  line-height: 1;
+}
+.hint-dot {
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background: #07C160;
+  margin-right: 10rpx;
+  flex-shrink: 0;
+}
+
+/* ── 输入框 ──────────────────────────────────────── */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+.input-box {
+  display: flex;
+  align-items: stretch;
+  height: 104rpx;
+  background: #F1F5F9;
+  border-radius: 24rpx;
+  padding: 0 28rpx;
+  box-sizing: border-box;
+}
+.prefix {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #0F172A;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+.input-sep {
+  width: 2rpx;
+  background: #CBD5E1;
+  margin: 28rpx 20rpx;
+  flex-shrink: 0;
+}
+.inp {
+  flex: 1;
+  height: 100%;
+  font-size: 30rpx;
+  color: #0F172A;
+  background: transparent;
+}
+.inp-ph {
+  color: #94A3B8;
+  font-size: 28rpx;
+}
+
+/* ── 获取验证码胶囊：用 align-self:center 而不是固定 height，避免基线偏移 */
+.code-pill {
+  flex-shrink: 0;
+  align-self: center;
+  height: 56rpx;
+  line-height: 56rpx;
+  padding: 0 24rpx;
+  border-radius: 28rpx;
+  background: #ffffff;
+  color: #1677FF;
+  font-size: 24rpx;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-left: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(22, 119, 255, 0.12);
+  text-align: center;
+}
+.code-pill-disabled {
+  background: #E2E8F0;
+  color: #94A3B8;
+  box-shadow: none;
+}
+
+/* ── 协议 ────────────────────────────────────────── */
+.agree-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  padding: 48rpx 0 16rpx;
+}
+.agree-box {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 8rpx;
+  border: 2rpx solid #CBD5E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+.agree-box-on {
+  border-color: #1677FF;
+  background: #1677FF;
+}
+.agree-tick {
+  width: 14rpx;
+  height: 8rpx;
+  border-left: 3rpx solid #ffffff;
+  border-bottom: 3rpx solid #ffffff;
+  transform: rotate(-45deg);
+  margin-bottom: 2rpx;
+}
+.agree-text {
+  font-size: 24rpx;
+  line-height: 1.6;
+  color: #94A3B8;
+  text-align: center;
+}
+.agree-light { color: #94A3B8; }
+.agree-link {
+  color: #1677FF;
+  font-weight: 500;
+}
+
+/* ── 跳过 ────────────────────────────────────────── */
+.skip {
+  text-align: center;
+  font-size: 26rpx;
+  color: #94A3B8;
+  padding: 24rpx 0 60rpx;
+}

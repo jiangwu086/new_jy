@@ -1,0 +1,179 @@
+.container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  padding: 40rpx 32rpx 70rpx;
+  box-sizing: border-box;
+}
+
+.status-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 92rpx;
+}
+
+.status-icon {
+  margin-bottom: 8rpx;
+}
+
+/* 加载中按钮 */
+.btn-loading {
+  opacity: 0.7;
+}
+.btn-spin {
+  width: 36rpx; height: 36rpx;
+  border: 4rpx solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-right: 14rpx;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.status-title {
+  margin: 42rpx 0 18rpx;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #172033;
+}
+
+.status-desc {
+  font-size: 28rpx;
+  color: #5b6472;
+  text-align: center;
+  line-height: 1.7;
+  margin-bottom: 74rpx;
+}
+
+.primary-btn,
+.submit-btn {
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2563eb;
+  color: #ffffff;
+  border-radius: 14rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+}
+
+.primary-btn {
+  width: 100%;
+}
+
+.primary-btn::after,
+.submit-btn::after {
+  display: none;
+}
+
+.auth-header {
+  padding: 22rpx 4rpx 38rpx;
+}
+
+.auth-title {
+  font-size: 40rpx;
+  color: #172033;
+  font-weight: 700;
+}
+
+.auth-desc {
+  margin-top: 14rpx;
+  font-size: 26rpx;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+.form-group,
+.auth-tips {
+  background-color: #ffffff;
+  border-radius: 18rpx;
+  padding: 0 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.form-item {
+  display: flex;
+  align-items: center;
+  min-height: 104rpx;
+  border-bottom: 2rpx solid #f1f5f9;
+}
+
+.form-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  width: 160rpx;
+  font-size: 29rpx;
+  color: #263246;
+  font-weight: 600;
+}
+
+.input {
+  flex: 1;
+  font-size: 29rpx;
+  color: #172033;
+}
+
+.auth-tips {
+  padding: 26rpx 30rpx;
+}
+
+.tip-title {
+  font-size: 28rpx;
+  color: #172033;
+  font-weight: 700;
+  margin-bottom: 10rpx;
+}
+
+.tip-text {
+  font-size: 25rpx;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 44rpx;
+}
+
+/* 状态文字颜色 */
+.status-title.passed   { color: #059669; }
+.status-title.rejected { color: #dc2626; }
+
+/* 拒绝原因 */
+.reject-reason {
+  font-size: 26rpx;
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1.5rpx solid #fecaca;
+  border-radius: 12rpx;
+  padding: 20rpx 28rpx;
+  margin-bottom: 50rpx;
+  line-height: 1.6;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 已提交信息卡片 */
+.info-card {
+  width: 100%;
+  background: #f8fafc;
+  border-radius: 16rpx;
+  padding: 10rpx 28rpx;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+}
+.info-row {
+  display: flex;
+  align-items: center;
+  padding: 18rpx 0;
+  border-bottom: 1.5rpx solid #e2e8f0;
+  font-size: 28rpx;
+}
+.info-row:last-child { border-bottom: none; }
+.info-label { color: #64748b; width: 130rpx; }
+.info-val   { color: #1a2332; font-weight: 500; }

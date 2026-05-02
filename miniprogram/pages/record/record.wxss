@@ -1,0 +1,167 @@
+.container {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  padding: 30rpx;
+}
+
+.record-stats {
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  display: flex;
+  padding: 40rpx 0;
+  margin-bottom: 40rpx;
+  box-shadow: 0 4rpx 10rpx rgba(0,0,0,0.02);
+}
+
+.stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-num {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #3b82f6;
+  margin-bottom: 10rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.stat-divider {
+  width: 2rpx;
+  background-color: #f1f5f9;
+}
+
+.record-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.filter-tabs {
+  display: flex;
+  background-color: #e2e8f0;
+  border-radius: 30rpx;
+  padding: 4rpx;
+}
+
+.filter-tab {
+  padding: 8rpx 30rpx;
+  font-size: 24rpx;
+  color: #666;
+  border-radius: 26rpx;
+}
+
+.filter-tab.active {
+  background-color: #ffffff;
+  color: #3b82f6;
+  font-weight: bold;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+}
+
+.record-item {
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.record-date-badge {
+  background-color: #eff6ff;
+  color: #3b82f6;
+  font-size: 24rpx;
+  font-weight: bold;
+  padding: 10rpx 16rpx;
+  border-radius: 12rpx;
+  margin-right: 24rpx;
+}
+
+.record-detail {
+  flex: 1;
+}
+
+.record-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.record-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.record-score {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #10b981;
+}
+
+/* 驳回记录整体置灰 */
+.record-item-rejected { opacity: 0.85; }
+.record-score-rejected,
+.record-score-pending {
+  font-size: 24rpx;
+  font-weight: 500;
+  color: #9ca3af;
+}
+
+/* 状态小标签（已驳回 / 审核中） */
+.status-pill {
+  display: inline-block;
+  margin-left: 12rpx;
+  padding: 2rpx 12rpx;
+  border-radius: 16rpx;
+  font-size: 20rpx;
+  font-weight: normal;
+  vertical-align: middle;
+}
+.status-pill-rejected {
+  background: #fef2f2;
+  color: #ef4444;
+}
+.status-pill-pending {
+  background: #fff7ed;
+  color: #f59e0b;
+}
+
+.record-remark {
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  color: #ef4444;
+  line-height: 1.4;
+}
+
+.empty-tip {
+  text-align: center;
+  color: #999;
+  font-size: 28rpx;
+  padding: 100rpx 0;
+}
+
+.loading-tip { text-align: center; color: #999; padding: 40rpx; font-size: 28rpx; }
+
+.empty-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80rpx 40rpx;
+}
+.empty-icon { margin-bottom: 24rpx; }
+.empty-title { font-size: 32rpx; color: #333; font-weight: 600; margin-bottom: 12rpx; }
+.empty-sub { font-size: 26rpx; color: #999; text-align: center; line-height: 1.6; }

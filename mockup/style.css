@@ -1,0 +1,1209 @@
+/**
+ * 文件用途：小程序页面展示工具 - 样式表
+ * 功能说明：iPhone外壳样式、各页面UI样式、下载按钮样式
+ * 作者：AI Assistant
+ * 创建日期：2026-04-07
+ */
+
+/* ==================== 全局样式 ==================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  background: #f0f2f5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==================== 顶部工具栏 ==================== */
+.toolbar {
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+
+.toolbar h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 8px;
+}
+
+.toolbar-desc {
+  font-size: 14px;
+  color: #8892a4;
+}
+
+/* ==================== 展示区域 ==================== */
+.showcase {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 48px;
+  padding: 30px 40px 60px;
+}
+
+/* ==================== 手机外部容器 ==================== */
+.phone-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.phone-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #4a5568;
+  letter-spacing: 0.5px;
+}
+
+/* ==================== iPhone外壳 ==================== */
+.phone-container {
+  /* 该容器用于截图，背景设为透明 */
+  padding: 12px;
+  background: transparent;
+}
+
+.iphone-frame {
+  width: 290px;
+  height: 628px;
+  border-radius: 44px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  /* iPhone 外壳边框 */
+  border: 3px solid #1a1a1a;
+  box-shadow:
+    0 0 0 2px #2d2d2d,
+    inset 0 0 0 1px #e0e0e0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==================== 状态栏 ==================== */
+.status-bar {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+  background: #fff;
+}
+
+.status-bar-light {
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+}
+
+.status-time {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+
+.status-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ==================== 页面内容区通用 ==================== */
+.screen-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #f5f6fa;
+}
+
+/* 隐藏滚动条 */
+.screen-content::-webkit-scrollbar { display: none; }
+.screen-content { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ==================== 底部Tab栏 ==================== */
+.tab-bar {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #fff;
+  border-top: 1px solid #e8ecef;
+  flex-shrink: 0;
+  padding-bottom: 6px;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: #aab0bc;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.tab-item.active { color: #3b82f6; }
+
+/* ==================== iPhone底部横条 ==================== */
+.home-indicator {
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: #fff;
+}
+
+.home-indicator::after {
+  content: '';
+  width: 120px;
+  height: 4px;
+  border-radius: 2px;
+  background: #1a1a1a;
+}
+
+/* ==================== 下载按钮 ==================== */
+.download-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 24px;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.download-btn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.download-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-loading {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==================== 导航栏通用 ==================== */
+.nav-bar {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a2e;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* ================================================================
+   页面1: 首页
+   ================================================================ */
+.home-page {
+  background: #fff;
+}
+
+.home-header {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  padding: 16px 16px 20px;
+}
+
+.home-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.home-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #999;
+}
+
+.home-banner {
+  margin: 12px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e0ecff 0%, #f0f6ff 100%);
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-banner::after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.banner-tag {
+  display: inline-block;
+  background: #3b82f6;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.banner-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a3a6e;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.banner-sub {
+  font-size: 11px;
+  color: #6b8fc7;
+}
+
+/* 功能入口网格 */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 16px;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.grid-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-scan { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.icon-map { background: linear-gradient(135deg, #10b981, #059669); }
+.icon-record { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.icon-gift { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+
+/* 公告栏 */
+.home-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 16px;
+  padding: 10px 14px;
+  background: #fffbeb;
+  border-radius: 8px;
+  border: 1px solid #fde68a;
+}
+
+.notice-tag {
+  font-size: 10px;
+  background: #f59e0b;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.notice-text {
+  font-size: 12px;
+  color: #92400e;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 区块标题 */
+.home-section { padding: 16px; }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.section-more {
+  font-size: 12px;
+  color: #8892a4;
+}
+
+/* 教育点卡片 */
+.point-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  border: 1px solid #e8ecef;
+}
+
+.point-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+
+.point-addr {
+  font-size: 11px;
+  color: #8892a4;
+}
+
+.point-status {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.point-status.open {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+/* ================================================================
+   页面2: 扫码打卡
+   ================================================================ */
+.scan-page {
+  background: #f5f6fa;
+}
+
+.scan-success-card {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  margin: 16px;
+  border-radius: 16px;
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.success-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+}
+
+.success-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.success-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+}
+
+.scan-info-card {
+  background: #fff;
+  margin: 0 16px;
+  border-radius: 12px;
+  padding: 4px 16px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 0;
+}
+
+.info-label {
+  font-size: 13px;
+  color: #8892a4;
+}
+
+.info-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1a2e;
+}
+
+.info-value.score { color: #3b82f6; font-weight: 700; }
+
+.info-divider {
+  height: 1px;
+  background: #f0f2f5;
+}
+
+.scan-photo-section {
+  margin: 16px;
+}
+
+.photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px dashed #d0d5dd;
+  color: #aab0bc;
+  font-size: 12px;
+}
+
+.scan-btn-done {
+  display: block;
+  width: calc(100% - 32px);
+  margin: 16px auto;
+  padding: 12px;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  font-family: inherit;
+}
+
+/* ================================================================
+   页面3: 教育点导航
+   ================================================================ */
+.map-page {
+  background: #f5f6fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-area {
+  flex: 1;
+  position: relative;
+  min-height: 260px;
+}
+
+.map-bg {
+  width: 100%;
+  height: 100%;
+  background: #e8eff8;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 模拟地图网格线 */
+.map-grid {
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.07) 1px, transparent 1px),
+    linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px, 60px 60px, 20px 20px, 20px 20px;
+}
+
+/* 模拟道路 */
+.map-bg::before {
+  content: '';
+  position: absolute;
+  top: 45%;
+  left: 0;
+  right: 0;
+  height: 18px;
+  background: rgba(255,255,255,0.7);
+  transform: rotate(-5deg);
+}
+
+.map-bg::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  width: 18px;
+  bottom: 0;
+  background: rgba(255,255,255,0.7);
+  transform: rotate(3deg);
+}
+
+/* 地图标记 */
+.map-pin { position: absolute; z-index: 5; }
+.pin-1 { top: 25%; left: 30%; }
+.pin-2 { top: 55%; left: 60%; }
+.pin-3 { top: 40%; left: 20%; }
+
+.user-location {
+  position: absolute;
+  top: 50%;
+  left: 48%;
+  z-index: 5;
+}
+
+.user-dot {
+  width: 14px;
+  height: 14px;
+  background: #3b82f6;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.2);
+}
+
+/* 底部卡片 */
+.map-card-list {
+  padding: 12px;
+  background: #fff;
+  border-radius: 16px 16px 0 0;
+}
+
+.map-card {
+  padding: 8px 0;
+}
+
+.map-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.map-card-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.map-card-dist {
+  font-size: 13px;
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+.map-card-addr {
+  font-size: 12px;
+  color: #8892a4;
+  margin-bottom: 10px;
+}
+
+.map-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.map-tag {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.map-tag.open { background: #ecfdf5; color: #059669; }
+
+.map-card-time {
+  font-size: 11px;
+  color: #8892a4;
+  flex: 1;
+}
+
+.nav-btn {
+  padding: 5px 16px;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+/* ================================================================
+   页面4: 我的记录
+   ================================================================ */
+.record-page {
+  background: #f5f6fa;
+}
+
+.record-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #fff;
+  margin: 12px 16px;
+  padding: 18px;
+  border-radius: 12px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-num {
+  font-size: 26px;
+  font-weight: 700;
+  color: #3b82f6;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #8892a4;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: #e8ecef;
+}
+
+.record-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px 8px;
+}
+
+.filter-tabs { display: flex; gap: 4px; }
+
+.filter-tab {
+  padding: 3px 12px;
+  border-radius: 14px;
+  font-size: 12px;
+  color: #8892a4;
+  background: #fff;
+  border: 1px solid #e8ecef;
+}
+
+.filter-tab.active {
+  background: #3b82f6;
+  color: #fff;
+  border-color: #3b82f6;
+}
+
+.record-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  margin: 0 16px 8px;
+  padding: 14px;
+  border-radius: 10px;
+}
+
+.record-date-badge {
+  width: 44px;
+  height: 44px;
+  background: #f0f6ff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+.record-detail { flex: 1; min-width: 0; }
+
+.record-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+
+.record-time {
+  font-size: 11px;
+  color: #8892a4;
+}
+
+.record-score {
+  font-size: 16px;
+  font-weight: 700;
+  color: #3b82f6;
+  flex-shrink: 0;
+}
+
+/* ================================================================
+   页面5: 个人中心
+   ================================================================ */
+.profile-page {
+  background: #f5f6fa;
+}
+
+.profile-header {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  padding: 52px 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.profile-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.profile-id {
+  font-size: 12px;
+  color: rgba(255,255,255,0.75);
+}
+
+.profile-score-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #fff;
+  margin: -14px 16px 12px;
+  padding: 16px;
+  border-radius: 12px;
+  position: relative;
+  z-index: 5;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.psc-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.psc-num {
+  font-size: 22px;
+  font-weight: 700;
+  color: #3b82f6;
+}
+
+.psc-label {
+  font-size: 11px;
+  color: #8892a4;
+}
+
+.psc-divider {
+  width: 1px;
+  height: 30px;
+  background: #e8ecef;
+}
+
+/* 菜单列表 */
+.profile-menu, .profile-policy {
+  background: #fff;
+  margin: 0 16px 12px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid #f5f6fa;
+}
+
+.menu-item:last-child { border-bottom: none; }
+
+.menu-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #2d3748;
+}
+
+.menu-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-badge {
+  background: #ef4444;
+  color: #fff;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* ================================================================
+   打卡流程1: 信息填写页
+   ================================================================ */
+.checkin-form-page {
+  background: #f5f6fa;
+}
+
+/* 顶部蓝色区域 */
+.checkin-header {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  padding: 52px 16px 20px;
+}
+
+.checkin-header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.checkin-hint {
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  text-align: center;
+  text-decoration: underline;
+}
+
+/* 表单区域 */
+.checkin-form {
+  background: #fff;
+  margin: -8px 16px 0;
+  border-radius: 12px;
+  padding: 20px 16px;
+  position: relative;
+  z-index: 5;
+}
+
+.form-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 8px;
+}
+
+.form-input {
+  padding: 12px 14px;
+  background: #f5f6fa;
+  border-radius: 8px;
+  border: 1px solid #e8ecef;
+}
+
+.input-text {
+  font-size: 14px;
+  color: #1a1a2e;
+  font-family: 'Inter', monospace;
+}
+
+.checkin-submit-btn {
+  display: block;
+  width: 100%;
+  margin-top: 24px;
+  padding: 13px;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  font-family: inherit;
+}
+
+/* 底部提示 */
+.checkin-form-tips {
+  padding: 20px 16px;
+}
+
+.tip-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #8892a4;
+  margin-bottom: 8px;
+}
+
+/* ================================================================
+   打卡流程2: 拍照合影页
+   ================================================================ */
+.checkin-photo-page {
+  background: #1a1a2e;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* 顶部导航（暗色背景） */
+.photo-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 16px 12px;
+  color: #fff;
+}
+
+/* 提示文字 */
+.photo-hint-text {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  padding: 8px 0 16px;
+}
+
+/* 相机取景框 */
+.camera-viewfinder {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  position: relative;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 取景框角标 */
+.vf-corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: rgba(255,255,255,0.5);
+  border-style: solid;
+  border-width: 0;
+}
+
+.vf-tl { top: 10px;  left: 10px;  border-top-width: 2px; border-left-width: 2px; border-radius: 4px 0 0 0; }
+.vf-tr { top: 10px;  right: 10px; border-top-width: 2px; border-right-width: 2px; border-radius: 0 4px 0 0; }
+.vf-bl { bottom: 10px; left: 10px;  border-bottom-width: 2px; border-left-width: 2px; border-radius: 0 0 0 4px; }
+.vf-br { bottom: 10px; right: 10px; border-bottom-width: 2px; border-right-width: 2px; border-radius: 0 0 4px 0; }
+
+/* 人物剪影 */
+.camera-silhouette {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* GPS定位水印 */
+.photo-watermark {
+  text-align: center;
+  padding: 20px 16px 8px;
+}
+
+.watermark-line {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  font-family: 'Inter', monospace;
+  line-height: 1.8;
+}
+
+/* 拍照按钮 */
+.photo-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0 30px;
+  flex: 1;
+}
+
+.shutter-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shutter-inner {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ef4444;
+}
+
+/* ================================================================
+   打卡流程3: 打卡成功页
+   ================================================================ */
+.checkin-success-page {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+}
+
+/* 成功大图标 */
+.success-hero {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.success-check-circle {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: #10b981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+.success-hero-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #10b981;
+}
+
+/* 打卡详情卡片 */
+.success-detail-card {
+  width: calc(100% - 32px);
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 32px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.detail-row:last-child { border-bottom: none; }
+
+.detail-label {
+  font-size: 13px;
+  color: #8892a4;
+}
+
+.detail-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1a2e;
+}
+
+.detail-value.highlight {
+  color: #3b82f6;
+  font-weight: 700;
+}
+
+/* 底部操作按钮 */
+.success-actions {
+  display: flex;
+  gap: 12px;
+  width: calc(100% - 32px);
+  padding-bottom: 20px;
+}
+
+.action-btn-outline {
+  flex: 1;
+  padding: 12px;
+  background: #fff;
+  color: #4a5568;
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.action-btn-primary {
+  flex: 1;
+  padding: 12px;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
+

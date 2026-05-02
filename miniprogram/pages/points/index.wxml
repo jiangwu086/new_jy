@@ -1,0 +1,67 @@
+<view class="container">
+  <!-- Tab 切换 -->
+  <view class="tab-bar">
+    <view class="tab-item {{activeTab === 'points' ? 'active' : ''}}" bindtap="switchTab" data-tab="points">
+      积分流水
+    </view>
+    <view class="tab-item {{activeTab === 'redeems' ? 'active' : ''}}" bindtap="switchTab" data-tab="redeems">
+      兑换记录
+    </view>
+  </view>
+
+  <!-- 积分流水 -->
+  <view wx:if="{{activeTab === 'points'}}">
+    <skeleton show="{{loadingPoints}}" type="list"></skeleton>
+    <view wx:if="{{!loadingPoints && pointsList.length === 0}}" class="empty-box">
+      <text class="empty-text">暂无积分记录</text>
+    </view>
+    <view wx:if="{{!loadingPoints && pointsList.length > 0}}">
+      <view class="record-item" wx:for="{{pointsList}}" wx:key="id">
+        <view class="record-left">
+          <!-- 积分获得：金币图标；积分消费：礼品图标 -->
+          <view class="record-icon {{item.amount > 0 ? 'earn' : 'spend'}}">
+            <text class="icon-emoji">{{item.amount > 0 ? '🪙' : '🎁'}}</text>
+          </view>
+          <view class="record-info">
+            <view class="record-title">{{item.remark || typeLabel[item.type] || '积分变动'}}</view>
+            <view class="record-time">{{item.createTime}}</view>
+          </view>
+        </view>
+        <view class="record-amount {{item.amount > 0 ? 'earn' : 'spend'}}">
+          {{item.amount > 0 ? '+' : ''}}{{item.amount}}
+        </view>
+      </view>
+      <!-- 加载更多 -->
+      <view class="load-more" wx:if="{{pointsHasMore}}" bindtap="loadMorePoints">
+        <text wx:if="{{!loadingMorePoints}}">加载更多</text>
+        <text wx:else>加载中...</text>
+      </view>
+      <view class="no-more" wx:elif="{{pointsList.length > 0}}">已加载全部</view>
+    </view>
+  </view>
+
+  <!-- 兑换记录 -->
+  <view wx:if="{{activeTab === 'redeems'}}">
+    <skeleton show="{{loadingRedeems}}" type="list"></skeleton>
+    <view wx:if="{{!loadingRedeems && redeemsList.length === 0}}" class="empty-box">
+      <text class="empty-text">暂无兑换记录</text>
+      <text class="empty-sub">快去兑换礼品吧</text>
+    </view>
+    <view wx:if="{{!loadingRedeems && redeemsList.length > 0}}">
+      <view class="redeem-item" wx:for="{{redeemsList}}" wx:key="id">
+        <view class="redeem-icon">🎁</view>
+        <view class="redeem-info">
+          <view class="redeem-name">{{item.giftName || item.remark || '礼品兑换'}}</view>
+          <view class="redeem-time">{{item.createTime}}</view>
+        </view>
+        <view class="redeem-cost">-{{item.pointsUsed}} 积分</view>
+      </view>
+      <!-- 加载更多 -->
+      <view class="load-more" wx:if="{{redeemsHasMore}}" bindtap="loadMoreRedeems">
+        <text wx:if="{{!loadingMoreRedeems}}">加载更多</text>
+        <text wx:else>加载中...</text>
+      </view>
+      <view class="no-more" wx:elif="{{redeemsList.length > 0}}">已加载全部</view>
+    </view>
+  </view>
+</view>

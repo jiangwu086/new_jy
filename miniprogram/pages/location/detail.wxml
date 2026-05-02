@@ -1,0 +1,54 @@
+<view class="container" wx:if="{{!loading && location}}">
+  <!-- 点位状态横幅 -->
+  <view class="loc-banner">
+    <view class="status-badge {{location.isOpen ? 'open' : 'closed'}}">
+      {{location.isOpen ? '开放中' : '暂停服务'}}
+    </view>
+  </view>
+
+  <view class="loc-header">
+    <view class="loc-title">{{location.name}}</view>
+    <view class="loc-tags">
+      <text class="tag {{location.isOpen ? 'open' : ''}}">{{location.isOpen ? '开放中' : '已关闭'}}</text>
+      <text class="tag" wx:if="{{location.districtCode}}">{{location.districtCode}}</text>
+    </view>
+  </view>
+
+  <view class="loc-section">
+    <view class="sec-title">基本信息</view>
+    <view class="info-row" wx:if="{{location.address}}">
+      <icon type="info_circle" size="16" color="#999" class="info-icon"/>
+      <text class="info-text">地址：{{location.address}}</text>
+    </view>
+    <view class="info-row">
+      <icon type="waiting" size="16" color="#999" class="info-icon"/>
+      <text class="info-text">打卡半径：{{location.checkinRadius || 200}} 米范围内有效</text>
+    </view>
+    <view class="info-row">
+      <icon type="info" size="16" color="#999" class="info-icon"/>
+      <text class="info-text">坐标：{{location.latitude}}, {{location.longitude}}</text>
+    </view>
+  </view>
+
+  <view class="loc-section">
+    <view class="sec-title">教育点介绍</view>
+    <view class="desc-text">
+      本站点是专为外卖骑手、快递员等新就业形态劳动者设立的线下安全教育服务站点。在此可参与交通安全警示教育并完成打卡获取积分，现场还提供免费饮水、休息等关爱服务。
+    </view>
+  </view>
+
+  <view class="bottom-bar">
+    <button class="nav-btn outline" bindtap="startNav">导航前往</button>
+    <button class="nav-btn primary" bindtap="goCheckin" wx:if="{{location.isOpen}}">扫码打卡</button>
+  </view>
+</view>
+
+<!-- 加载中 -->
+<view class="loading-box" wx:if="{{loading}}">
+  <view class="loading-text">加载中...</view>
+</view>
+
+<!-- 加载失败 -->
+<view class="loading-box" wx:if="{{!loading && !location}}">
+  <view class="loading-text">点位信息加载失败</view>
+</view>

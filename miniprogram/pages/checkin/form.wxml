@@ -1,0 +1,54 @@
+<view class="container">
+  <!-- 蓝色顶部背景区 -->
+  <view class="checkin-header">
+    <view class="checkin-title">实名打卡核验</view>
+    <view class="checkin-hint">请确认信息后前往现场拍照</view>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="checkin-loading" wx:if="{{loading}}">
+    <view class="loading-text">正在检查打卡资格...</view>
+  </view>
+
+  <!-- 表单区域 -->
+  <view class="checkin-form" wx:if="{{!loading}}">
+    <!-- 点位信息 -->
+    <view class="form-section-title">教育点：{{locationName}}</view>
+
+    <!-- 本周期打卡进度 -->
+    <view class="checkin-progress">
+      <view class="progress-bar-bg">
+        <view class="progress-bar-fill"
+              style="width:{{maxCount > 0 ? (currentCount / maxCount * 100) : 0}}%"></view>
+      </view>
+      <view class="progress-label">
+        本周期已打卡 {{currentCount}} / {{maxCount}} 次
+        <text wx:if="{{canCheckin}}" style="color:#10b981"> · 可打卡</text>
+        <text wx:else style="color:#ef4444"> · 已达上限</text>
+      </view>
+    </view>
+
+    <!-- 已认证用户信息展示 -->
+    <view class="form-group" wx:if="{{idCardMasked}}">
+      <view class="form-label">身份证号（已认证）</view>
+      <view class="form-value">{{idCardMasked}}</view>
+    </view>
+
+    <button class="checkin-submit-btn {{canCheckin ? '' : 'disabled'}}"
+            bindtap="goToNext" disabled="{{!canCheckin}}">
+      {{canCheckin ? '下一步：前往现场拍照' : '本周期打卡次数已满'}}
+    </button>
+  </view>
+
+  <!-- 底部提示 -->
+  <view class="checkin-form-tips">
+    <view class="tip-item">
+      <icon type="info" size="14" color="#8892a4"/>
+      <text>请确保您本人在教育点现场</text>
+    </view>
+    <view class="tip-item">
+      <icon type="info" size="14" color="#8892a4"/>
+      <text>GPS 定位误差超过打卡半径将无法提交</text>
+    </view>
+  </view>
+</view>

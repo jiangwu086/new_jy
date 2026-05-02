@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="article-list">
+    <view class="article-item" wx:for="{{list}}" wx:key="id" data-id="{{item.id}}" bindtap="goToDetail">
+      <view class="article-content">
+        <view class="article-title">{{item.title}}</view>
+        <view class="article-date">{{item.date}}</view>
+      </view>
+      <view class="article-arrow">></view>
+    </view>
+    
+    <!-- 空状态 -->
+    <view class="empty-box" wx:if="{{list.length === 0 && !loading}}">
+      <image class="empty-img" src="/images/empty_article.svg" mode="aspectFit"/>
+      <view class="empty-text">暂无相关内容</view>
+      <view class="empty-sub">内容正在整理中，敬请期待</view>
+    </view>
+  </view>
+</view>

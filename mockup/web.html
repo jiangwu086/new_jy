@@ -1,0 +1,839 @@
+<!--
+  文件用途：新就业形态劳动者安全警示服务 - 管理后台Web页面展示
+  功能说明：展示管理控制台各页面效果图，支持单张PNG透明背景下载
+  作者：AI Assistant
+  创建日期：2026-04-07
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>管理后台页面展示 - 安全警示服务</title>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="web-style.css">
+</head>
+<body>
+
+<!-- 顶部工具栏 -->
+<div class="toolbar">
+  <h1>管理后台 · Web端页面展示</h1>
+  <p class="toolbar-desc">点击每个页面下方的"下载PNG"按钮，即可单独下载透明背景的页面截图</p>
+  <p class="toolbar-desc" style="margin-top:6px"><a href="index.html" style="color:#3b82f6;text-decoration:none">切换到小程序页面 ></a></p>
+</div>
+
+<!-- 页面展示区域 -->
+<div class="web-showcase">
+
+  <!-- ========== 页面1: 数据看板 ========== -->
+  <div class="web-wrapper">
+    <div class="web-container" id="web-dashboard">
+      <div class="admin-panel">
+        <!-- 左侧导航栏 -->
+        <div class="admin-sidebar">
+          <div class="sidebar-logo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>安全管理系统</span>
+          </div>
+          <div class="sidebar-user">管理员 Admin</div>
+          <nav class="sidebar-nav">
+            <div class="nav-item active">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              <span>管理控制台</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>教育点管理</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              <span>用户管理</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+              <span>打卡记录</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,12 20,22 4,22 4,12"/><rect x="2" y="7" width="20" height="5"/></svg>
+              <span>积分核销</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+              <span>消息推送</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <span>数据统计</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4"/></svg>
+              <span>系统管理</span>
+            </div>
+          </nav>
+        </div>
+        <!-- 右侧主内容 -->
+        <div class="admin-main">
+          <!-- 顶部栏 -->
+          <div class="admin-topbar">
+            <div class="topbar-breadcrumb">
+              <span class="bc-label">安全警示服务</span>
+              <span class="bc-sep">/</span>
+              <span class="bc-label">OVERVIEW</span>
+            </div>
+            <div class="topbar-right">
+              <div class="topbar-search">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                <span>搜索功能或数据...</span>
+              </div>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg>
+              <div class="topbar-avatar">A</div>
+            </div>
+          </div>
+          <!-- 页面标题 -->
+          <div class="page-header">
+            <div>
+              <h2 class="page-title">管理控制台主页</h2>
+            </div>
+            <div class="page-header-right">
+              <span class="date-range">2026年4月1日 - 2026年4月7日</span>
+              <button class="export-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                导出报表
+              </button>
+            </div>
+          </div>
+          <!-- 数据卡片 -->
+          <div class="stats-cards">
+            <div class="stat-card">
+              <div class="sc-header">
+                <span class="sc-title">累计打卡人次</span>
+                <div class="sc-icon sc-icon-blue">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+              </div>
+              <div class="sc-value">1,284,592</div>
+              <div class="sc-trend up">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18,15 12,9 6,15"/></svg>
+                18%
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="sc-header">
+                <span class="sc-title">区域覆盖率</span>
+                <div class="sc-icon sc-icon-green">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+              </div>
+              <div class="sc-value">94.8%</div>
+              <div class="sc-trend up">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18,15 12,9 6,15"/></svg>
+                6%
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="sc-header">
+                <span class="sc-title">活跃教育点</span>
+                <div class="sc-icon sc-icon-amber">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                </div>
+              </div>
+              <div class="sc-value">452</div>
+              <div class="sc-trend up">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18,15 12,9 6,15"/></svg>
+                12%
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="sc-header">
+                <span class="sc-title">已累积积分</span>
+                <div class="sc-icon sc-icon-purple">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                </div>
+              </div>
+              <div class="sc-value">8,920,400</div>
+              <div class="sc-trend up">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18,15 12,9 6,15"/></svg>
+                22%
+              </div>
+            </div>
+          </div>
+          <!-- 图表区 -->
+          <div class="chart-row">
+            <!-- 趋势图 -->
+            <div class="chart-card chart-main">
+              <div class="chart-title">每日打卡趋势</div>
+              <div class="chart-legend">
+                <span class="legend-item"><span class="legend-dot" style="background:#3b82f6"></span>当月数据</span>
+              </div>
+              <div class="chart-area">
+                <!-- 模拟折线图 -->
+                <svg width="100%" height="140" viewBox="0 0 480 140" preserveAspectRatio="none">
+                  <!-- 网格线 -->
+                  <line x1="0" y1="35" x2="480" y2="35" stroke="#f0f2f5" stroke-width="1"/>
+                  <line x1="0" y1="70" x2="480" y2="70" stroke="#f0f2f5" stroke-width="1"/>
+                  <line x1="0" y1="105" x2="480" y2="105" stroke="#f0f2f5" stroke-width="1"/>
+                  <!-- 填充区域 -->
+                  <path d="M0,120 Q40,110 80,100 Q120,90 160,70 Q200,50 240,35 Q280,25 320,30 Q360,40 400,55 Q440,65 480,80 L480,140 L0,140 Z" fill="rgba(59,130,246,0.08)"/>
+                  <!-- 折线 -->
+                  <path d="M0,120 Q40,110 80,100 Q120,90 160,70 Q200,50 240,35 Q280,25 320,30 Q360,40 400,55 Q440,65 480,80" fill="none" stroke="#3b82f6" stroke-width="2.5"/>
+                  <!-- 数据点 -->
+                  <circle cx="80" cy="100" r="3.5" fill="#3b82f6"/>
+                  <circle cx="160" cy="70" r="3.5" fill="#3b82f6"/>
+                  <circle cx="240" cy="35" r="3.5" fill="#3b82f6"/>
+                  <circle cx="320" cy="30" r="3.5" fill="#3b82f6"/>
+                  <circle cx="400" cy="55" r="3.5" fill="#3b82f6"/>
+                </svg>
+                <div class="chart-x-labels">
+                  <span>4/1</span><span>4/2</span><span>4/3</span><span>4/4</span><span>4/5</span><span>4/6</span><span>4/7</span>
+                </div>
+              </div>
+            </div>
+            <!-- 排行榜 -->
+            <div class="chart-card chart-side">
+              <div class="chart-title">区域覆盖率排行榜</div>
+              <div class="rank-list">
+                <div class="rank-item">
+                  <span class="rank-name">天桥区</span>
+                  <div class="rank-bar-bg"><div class="rank-bar" style="width:98.2%"></div></div>
+                  <span class="rank-val">98.2%</span>
+                </div>
+                <div class="rank-item">
+                  <span class="rank-name">槐荫区</span>
+                  <div class="rank-bar-bg"><div class="rank-bar" style="width:96.5%"></div></div>
+                  <span class="rank-val">96.5%</span>
+                </div>
+                <div class="rank-item">
+                  <span class="rank-name">历下区</span>
+                  <div class="rank-bar-bg"><div class="rank-bar" style="width:94.1%"></div></div>
+                  <span class="rank-val">94.1%</span>
+                </div>
+                <div class="rank-item">
+                  <span class="rank-name">历城区</span>
+                  <div class="rank-bar-bg"><div class="rank-bar" style="width:91.8%"></div></div>
+                  <span class="rank-val">91.8%</span>
+                </div>
+                <div class="rank-item">
+                  <span class="rank-name">市中区</span>
+                  <div class="rank-bar-bg"><div class="rank-bar" style="width:89.6%"></div></div>
+                  <span class="rank-val">89.6%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="web-label">管理控制台 - 数据看板</div>
+    <button class="download-btn" onclick="downloadPhone('web-dashboard','管理后台_数据看板')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      下载 PNG
+    </button>
+  </div>
+
+  <!-- ========== 页面2: 积分核销 ========== -->
+  <div class="web-wrapper">
+    <div class="web-container" id="web-redeem">
+      <div class="admin-panel">
+        <!-- 左侧导航栏(简化) -->
+        <div class="admin-sidebar">
+          <div class="sidebar-logo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>安全管理系统</span>
+          </div>
+          <div class="sidebar-user">管理员 Admin</div>
+          <nav class="sidebar-nav">
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              <span>管理控制台</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>教育点管理</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              <span>用户管理</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+              <span>打卡记录</span>
+            </div>
+            <div class="nav-item active">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,12 20,22 4,22 4,12"/><rect x="2" y="7" width="20" height="5"/></svg>
+              <span>积分核销</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg>
+              <span>消息推送</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <span>数据统计</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4"/></svg>
+              <span>系统管理</span>
+            </div>
+          </nav>
+        </div>
+        <!-- 右侧主内容 -->
+        <div class="admin-main">
+          <div class="admin-topbar">
+            <div class="topbar-breadcrumb">
+              <span class="bc-label">安全警示服务</span>
+              <span class="bc-sep">/</span>
+              <span class="bc-label">积分核销</span>
+            </div>
+            <div class="topbar-right">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg>
+              <div class="topbar-avatar">A</div>
+            </div>
+          </div>
+          <div class="page-header">
+            <h2 class="page-title">待核销名单（积分>=2000分）</h2>
+          </div>
+          <!-- 表格 + 弹窗 -->
+          <div class="redeem-content">
+            <div class="data-table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>骑手姓名</th>
+                    <th>手机号</th>
+                    <th>当期积分</th>
+                    <th>兑换物品</th>
+                    <th>核销状态</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>李四</td>
+                    <td>139****8888</td>
+                    <td>2150分</td>
+                    <td>安全头盔</td>
+                    <td><span class="status-tag pending">未核销</span></td>
+                    <td><button class="btn-sm btn-primary">核销</button></td>
+                  </tr>
+                  <tr>
+                    <td>王大宝</td>
+                    <td>139****8888</td>
+                    <td>2150分</td>
+                    <td>安全头盔</td>
+                    <td><span class="status-tag pending">未核销</span></td>
+                    <td><button class="btn-sm btn-primary">核销</button></td>
+                  </tr>
+                  <tr>
+                    <td>李四</td>
+                    <td>139****8888</td>
+                    <td>2150分</td>
+                    <td>安全头盔</td>
+                    <td><span class="status-tag pending">未核销</span></td>
+                    <td><button class="btn-sm btn-primary">核销</button></td>
+                  </tr>
+                  <tr>
+                    <td>李明康</td>
+                    <td>139****8888</td>
+                    <td>2150分</td>
+                    <td>安全头盔</td>
+                    <td><span class="status-tag pending">未核销</span></td>
+                    <td><button class="btn-sm btn-primary">核销</button></td>
+                  </tr>
+                  <tr>
+                    <td>张平原</td>
+                    <td>139****8888</td>
+                    <td>2150分</td>
+                    <td>安全头盔</td>
+                    <td><span class="status-tag pending">未核销</span></td>
+                    <td><button class="btn-sm btn-primary">核销</button></td>
+                  </tr>
+                  <tr>
+                    <td>李四</td>
+                    <td>128****8888</td>
+                    <td>2150分</td>
+                    <td>安全头盔</td>
+                    <td><span class="status-tag done">已核销</span></td>
+                    <td><button class="btn-sm btn-ghost">详情</button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- 分页 -->
+              <div class="table-pagination">
+                <span>共30条</span>
+                <div class="pagi-btns">
+                  <span class="pagi-btn">&lt;</span>
+                  <span class="pagi-btn active">1</span>
+                  <span class="pagi-btn">2</span>
+                  <span class="pagi-btn">&gt;</span>
+                  <span class="pagi-btn">&gt;&gt;</span>
+                </div>
+              </div>
+            </div>
+            <!-- 扫码弹窗 -->
+            <div class="qr-popup">
+              <div class="qr-title">扫骑手码</div>
+              <div class="qr-code-box">
+                <!-- 模拟二维码 -->
+                <svg width="100" height="100" viewBox="0 0 100 100">
+                  <rect width="100" height="100" fill="#fff"/>
+                  <!-- 左上定位块 -->
+                  <rect x="5" y="5" width="24" height="24" fill="#3b82f6" rx="2"/><rect x="9" y="9" width="16" height="16" fill="#fff" rx="1"/><rect x="13" y="13" width="8" height="8" fill="#3b82f6" rx="1"/>
+                  <!-- 右上定位块 -->
+                  <rect x="71" y="5" width="24" height="24" fill="#3b82f6" rx="2"/><rect x="75" y="9" width="16" height="16" fill="#fff" rx="1"/><rect x="79" y="13" width="8" height="8" fill="#3b82f6" rx="1"/>
+                  <!-- 左下定位块 -->
+                  <rect x="5" y="71" width="24" height="24" fill="#3b82f6" rx="2"/><rect x="9" y="75" width="16" height="16" fill="#fff" rx="1"/><rect x="13" y="79" width="8" height="8" fill="#3b82f6" rx="1"/>
+                  <!-- 数据区域模拟 -->
+                  <rect x="35" y="10" width="4" height="4" fill="#3b82f6"/><rect x="43" y="10" width="4" height="4" fill="#3b82f6"/><rect x="51" y="10" width="4" height="4" fill="#3b82f6"/><rect x="59" y="10" width="4" height="4" fill="#3b82f6"/>
+                  <rect x="35" y="18" width="4" height="4" fill="#3b82f6"/><rect x="47" y="18" width="4" height="4" fill="#3b82f6"/><rect x="55" y="18" width="4" height="4" fill="#3b82f6"/>
+                  <rect x="10" y="35" width="4" height="4" fill="#3b82f6"/><rect x="18" y="35" width="4" height="4" fill="#3b82f6"/><rect x="35" y="35" width="4" height="4" fill="#3b82f6"/><rect x="43" y="35" width="4" height="4" fill="#3b82f6"/><rect x="59" y="35" width="4" height="4" fill="#3b82f6"/><rect x="71" y="35" width="4" height="4" fill="#3b82f6"/><rect x="83" y="35" width="4" height="4" fill="#3b82f6"/>
+                  <rect x="10" y="43" width="4" height="4" fill="#3b82f6"/><rect x="26" y="43" width="4" height="4" fill="#3b82f6"/><rect x="43" y="43" width="4" height="4" fill="#3b82f6"/><rect x="51" y="43" width="4" height="4" fill="#3b82f6"/><rect x="67" y="43" width="4" height="4" fill="#3b82f6"/><rect x="79" y="43" width="4" height="4" fill="#3b82f6"/>
+                  <rect x="10" y="51" width="4" height="4" fill="#3b82f6"/><rect x="18" y="51" width="4" height="4" fill="#3b82f6"/><rect x="35" y="51" width="4" height="4" fill="#3b82f6"/><rect x="51" y="51" width="4" height="4" fill="#3b82f6"/><rect x="63" y="51" width="4" height="4" fill="#3b82f6"/><rect x="75" y="51" width="4" height="4" fill="#3b82f6"/><rect x="87" y="51" width="4" height="4" fill="#3b82f6"/>
+                  <rect x="10" y="59" width="4" height="4" fill="#3b82f6"/><rect x="22" y="59" width="4" height="4" fill="#3b82f6"/><rect x="39" y="59" width="4" height="4" fill="#3b82f6"/><rect x="47" y="59" width="4" height="4" fill="#3b82f6"/><rect x="59" y="59" width="4" height="4" fill="#3b82f6"/><rect x="71" y="59" width="4" height="4" fill="#3b82f6"/><rect x="83" y="59" width="4" height="4" fill="#3b82f6"/>
+                  <rect x="35" y="71" width="4" height="4" fill="#3b82f6"/><rect x="43" y="71" width="4" height="4" fill="#3b82f6"/><rect x="55" y="71" width="4" height="4" fill="#3b82f6"/><rect x="67" y="71" width="4" height="4" fill="#3b82f6"/><rect x="79" y="75" width="4" height="4" fill="#3b82f6"/><rect x="87" y="79" width="4" height="4" fill="#3b82f6"/>
+                  <rect x="35" y="83" width="4" height="4" fill="#3b82f6"/><rect x="47" y="83" width="4" height="4" fill="#3b82f6"/><rect x="59" y="83" width="4" height="4" fill="#3b82f6"/><rect x="71" y="83" width="4" height="4" fill="#3b82f6"/><rect x="83" y="87" width="4" height="4" fill="#3b82f6"/>
+                </svg>
+              </div>
+              <button class="btn-sm btn-primary" style="width:100%;padding:8px;margin-top:8px">扫码</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="web-label">管理后台 - 积分核销</div>
+    <button class="download-btn" onclick="downloadPhone('web-redeem','管理后台_积分核销')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      下载 PNG
+    </button>
+  </div>
+
+  <!-- ========== 页面3: 消息推送 ========== -->
+  <div class="web-wrapper">
+    <div class="web-container" id="web-push">
+      <div class="admin-panel">
+        <!-- 左侧导航栏 -->
+        <div class="admin-sidebar">
+          <div class="sidebar-logo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>安全管理系统</span>
+          </div>
+          <div class="sidebar-user">管理员 Admin</div>
+          <nav class="sidebar-nav">
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              <span>管理控制台</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>教育点管理</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              <span>用户管理</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+              <span>打卡记录</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,12 20,22 4,22 4,12"/><rect x="2" y="7" width="20" height="5"/></svg>
+              <span>积分核销</span>
+            </div>
+            <div class="nav-item active">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+              <span>消息推送</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <span>数据统计</span>
+            </div>
+            <div class="nav-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4"/></svg>
+              <span>系统管理</span>
+            </div>
+          </nav>
+        </div>
+        <!-- 右侧主内容 -->
+        <div class="admin-main">
+          <div class="admin-topbar">
+            <div class="topbar-breadcrumb">
+              <span class="bc-label">安全警示服务</span>
+              <span class="bc-sep">/</span>
+              <span class="bc-label">消息推送配置</span>
+            </div>
+            <div class="topbar-right">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg>
+              <div class="topbar-avatar">A</div>
+            </div>
+          </div>
+          <div class="page-header">
+            <h2 class="page-title">消息推送配置</h2>
+          </div>
+          <!-- 推送配置区 -->
+          <div class="push-layout">
+            <!-- 左：区域选择 -->
+            <div class="push-region">
+              <div class="region-title">区域选择</div>
+              <div class="region-tree">
+                <div class="tree-item parent">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+                  <input type="checkbox" checked class="tree-check">
+                  <span>全部(济南市)</span>
+                </div>
+                <div class="tree-item child">
+                  <input type="checkbox" checked class="tree-check"><span>历下区</span>
+                </div>
+                <div class="tree-item child">
+                  <input type="checkbox" class="tree-check"><span>市中区</span>
+                </div>
+                <div class="tree-item child">
+                  <input type="checkbox" class="tree-check"><span>天桥区</span>
+                </div>
+                <div class="tree-item child">
+                  <input type="checkbox" class="tree-check"><span>槐荫区</span>
+                </div>
+                <div class="tree-item child">
+                  <input type="checkbox" class="tree-check"><span>历城区</span>
+                </div>
+                <div class="tree-item child">
+                  <input type="checkbox" class="tree-check"><span>长清区</span>
+                </div>
+                <div class="tree-item child">
+                  <input type="checkbox" class="tree-check"><span>章丘区</span>
+                </div>
+              </div>
+            </div>
+            <!-- 右：消息编辑 + 推送记录 -->
+            <div class="push-editor">
+              <div class="editor-section">
+                <div class="editor-title">消息编辑框</div>
+                <div class="editor-textarea">温馨提示：您所在区域新增安全教育站点，请及时前往打卡。关爱您的安全，请勿忽略此消息。</div>
+                <div class="editor-options">
+                  <label class="opt-item">
+                    <input type="checkbox" checked class="tree-check">
+                    <span>微信订阅消息</span>
+                  </label>
+                  <label class="opt-item">
+                    <input type="checkbox" class="tree-check">
+                    <span>阿里云短信</span>
+                  </label>
+                </div>
+                <div class="editor-actions">
+                  <button class="btn-sm btn-primary" style="padding:8px 28px">发送</button>
+                </div>
+              </div>
+              <!-- 推送记录 -->
+              <div class="push-records">
+                <div class="editor-title">推送记录</div>
+                <table class="data-table compact">
+                  <thead>
+                    <tr>
+                      <th>时间</th>
+                      <th>区域</th>
+                      <th>推送人数</th>
+                      <th>成功人数</th>
+                      <th>成功率</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>2026-04-05 10:00</td>
+                      <td>历下区</td>
+                      <td>5,000</td>
+                      <td>4,905</td>
+                      <td>98.1%</td>
+                    </tr>
+                    <tr>
+                      <td>2026-04-03 15:30</td>
+                      <td>济南市</td>
+                      <td>12,845</td>
+                      <td>12,600</td>
+                      <td>98.1%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="web-label">管理后台 - 消息推送</div>
+    <button class="download-btn" onclick="downloadPhone('web-push','管理后台_消息推送')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      下载 PNG
+    </button>
+  </div>
+
+  <!-- ========== 页面4: 教育点管理 ========== -->
+  <div class="web-wrapper">
+    <div class="web-container" id="web-edu-points">
+      <div class="admin-panel">
+        <div class="admin-sidebar">
+          <div class="sidebar-logo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>安全管理系统</span>
+          </div>
+          <div class="sidebar-user">管理员 Admin</div>
+          <nav class="sidebar-nav">
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span>管理控制台</span></div>
+            <div class="nav-item active"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>教育点管理</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span>用户管理</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg><span>打卡记录</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,12 20,22 4,22 4,12"/><rect x="2" y="7" width="20" height="5"/></svg><span>积分核销</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg><span>消息推送</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>数据统计</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06"/></svg><span>系统管理</span></div>
+          </nav>
+        </div>
+        <div class="admin-main">
+          <div class="admin-topbar">
+            <div class="topbar-breadcrumb"><span class="bc-label">安全警示服务</span><span class="bc-sep">/</span><span class="bc-label">教育点管理</span></div>
+            <div class="topbar-right"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg><div class="topbar-avatar">A</div></div>
+          </div>
+          <div class="page-header">
+            <h2 class="page-title">教育点管理</h2>
+            <div class="page-header-right">
+              <div class="filter-group">
+                <select class="filter-select"><option>全部区域</option><option>历下区</option><option>槐荫区</option></select>
+                <select class="filter-select"><option>全部状态</option><option>开放中</option><option>已关闭</option></select>
+              </div>
+              <button class="export-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                新增教育点
+              </button>
+            </div>
+          </div>
+          <!-- 教育点表格 -->
+          <div class="content-scroll">
+            <div class="data-table-wrap" style="margin:0 20px;border-radius:10px;border:1px solid #e8ecef;overflow:hidden">
+              <table class="data-table">
+                <thead>
+                  <tr><th>编号</th><th>教育点名称</th><th>区域</th><th>地址</th><th>联系人</th><th>状态</th><th>累计打卡</th><th>操作</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>EP001</td><td>泉城广场站</td><td>历下区</td><td>泉城路128号</td><td>张主任</td><td><span class="status-dot open"></span>开放中</td><td>12,580</td><td><button class="btn-sm btn-ghost">编辑</button> <button class="btn-sm btn-ghost">禁用</button></td></tr>
+                  <tr><td>EP002</td><td>大明湖站</td><td>历下区</td><td>大明湖路56号</td><td>李主任</td><td><span class="status-dot open"></span>开放中</td><td>9,832</td><td><button class="btn-sm btn-ghost">编辑</button> <button class="btn-sm btn-ghost">禁用</button></td></tr>
+                  <tr><td>EP003</td><td>经十路站</td><td>市中区</td><td>经十路218号</td><td>王站长</td><td><span class="status-dot open"></span>开放中</td><td>8,456</td><td><button class="btn-sm btn-ghost">编辑</button> <button class="btn-sm btn-ghost">禁用</button></td></tr>
+                  <tr><td>EP004</td><td>天桥区站</td><td>天桥区</td><td>堤口路88号</td><td>赵科长</td><td><span class="status-dot closed"></span>已关闭</td><td>5,120</td><td><button class="btn-sm btn-ghost">编辑</button> <button class="btn-sm btn-primary">启用</button></td></tr>
+                  <tr><td>EP005</td><td>槐荫广场站</td><td>槐荫区</td><td>经四路156号</td><td>刘主任</td><td><span class="status-dot open"></span>开放中</td><td>7,643</td><td><button class="btn-sm btn-ghost">编辑</button> <button class="btn-sm btn-ghost">禁用</button></td></tr>
+                  <tr><td>EP006</td><td>历城大学城站</td><td>历城区</td><td>工业南路320号</td><td>孙站长</td><td><span class="status-dot open"></span>开放中</td><td>6,218</td><td><button class="btn-sm btn-ghost">编辑</button> <button class="btn-sm btn-ghost">禁用</button></td></tr>
+                </tbody>
+              </table>
+              <div class="table-pagination">
+                <span>共 452 条教育点</span>
+                <div class="pagi-btns">
+                  <span class="pagi-btn">&lt;</span><span class="pagi-btn active">1</span><span class="pagi-btn">2</span><span class="pagi-btn">3</span><span class="pagi-btn">...</span><span class="pagi-btn">46</span><span class="pagi-btn">&gt;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="web-label">管理后台 - 教育点管理</div>
+    <button class="download-btn" onclick="downloadPhone('web-edu-points','管理后台_教育点管理')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      下载 PNG
+    </button>
+  </div>
+
+  <!-- ========== 页面5: 打卡记录 ========== -->
+  <div class="web-wrapper">
+    <div class="web-container" id="web-checkin-records">
+      <div class="admin-panel">
+        <div class="admin-sidebar">
+          <div class="sidebar-logo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>安全管理系统</span>
+          </div>
+          <div class="sidebar-user">管理员 Admin</div>
+          <nav class="sidebar-nav">
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span>管理控制台</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>教育点管理</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span>用户管理</span></div>
+            <div class="nav-item active"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg><span>打卡记录</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,12 20,22 4,22 4,12"/><rect x="2" y="7" width="20" height="5"/></svg><span>积分核销</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg><span>消息推送</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>数据统计</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06"/></svg><span>系统管理</span></div>
+          </nav>
+        </div>
+        <div class="admin-main">
+          <div class="admin-topbar">
+            <div class="topbar-breadcrumb"><span class="bc-label">安全警示服务</span><span class="bc-sep">/</span><span class="bc-label">打卡记录查询</span></div>
+            <div class="topbar-right"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg><div class="topbar-avatar">A</div></div>
+          </div>
+          <div class="page-header">
+            <h2 class="page-title">打卡记录查询</h2>
+            <div class="page-header-right">
+              <button class="export-btn" style="background:#10b981">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                导出Excel
+              </button>
+            </div>
+          </div>
+          <!-- 筛选栏 -->
+          <div class="filter-bar">
+            <div class="filter-group">
+              <select class="filter-select"><option>全部区域</option></select>
+              <select class="filter-select"><option>全部教育点</option></select>
+              <select class="filter-select"><option>2026年4月</option></select>
+              <input class="filter-input" placeholder="搜索姓名/手机号">
+              <button class="btn-sm btn-primary" style="padding:6px 16px">查询</button>
+            </div>
+          </div>
+          <!-- 打卡明细表格 -->
+          <div class="content-scroll">
+            <div class="data-table-wrap" style="margin:0 20px;border-radius:10px;border:1px solid #e8ecef;overflow:hidden">
+              <table class="data-table">
+                <thead>
+                  <tr><th>打卡时间</th><th>骑手姓名</th><th>手机号</th><th>身份证号</th><th>教育点</th><th>获得积分</th><th>现场合照</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>2026-04-07 14:32</td><td>张*明</td><td>138****5678</td><td>3701********1234</td><td>泉城广场站</td><td class="text-blue">+5</td><td><div class="photo-thumb"></div></td></tr>
+                  <tr><td>2026-04-07 14:15</td><td>李*</td><td>139****8888</td><td>3701********5678</td><td>泉城广场站</td><td class="text-blue">+5</td><td><div class="photo-thumb"></div></td></tr>
+                  <tr><td>2026-04-07 13:48</td><td>王*华</td><td>136****3210</td><td>3701********9012</td><td>大明湖站</td><td class="text-blue">+5</td><td><div class="photo-thumb"></div></td></tr>
+                  <tr><td>2026-04-07 11:22</td><td>赵*龙</td><td>158****6543</td><td>3701********3456</td><td>经十路站</td><td class="text-blue">+5</td><td><div class="photo-thumb"></div></td></tr>
+                  <tr><td>2026-04-07 10:05</td><td>刘*萍</td><td>137****1111</td><td>3701********7890</td><td>槐荫广场站</td><td class="text-blue">+5</td><td><div class="photo-thumb"></div></td></tr>
+                </tbody>
+              </table>
+              <div class="table-pagination">
+                <span>共 1,284,592 条记录</span>
+                <div class="pagi-btns">
+                  <span class="pagi-btn">&lt;</span><span class="pagi-btn active">1</span><span class="pagi-btn">2</span><span class="pagi-btn">3</span><span class="pagi-btn">...</span><span class="pagi-btn">999</span><span class="pagi-btn">&gt;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="web-label">管理后台 - 打卡记录查询</div>
+    <button class="download-btn" onclick="downloadPhone('web-checkin-records','管理后台_打卡记录')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      下载 PNG
+    </button>
+  </div>
+
+  <!-- ========== 页面6: 数据统计 ========== -->
+  <div class="web-wrapper">
+    <div class="web-container" id="web-statistics">
+      <div class="admin-panel">
+        <div class="admin-sidebar">
+          <div class="sidebar-logo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>安全管理系统</span>
+          </div>
+          <div class="sidebar-user">管理员 Admin</div>
+          <nav class="sidebar-nav">
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span>管理控制台</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>教育点管理</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span>用户管理</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg><span>打卡记录</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,12 20,22 4,22 4,12"/><rect x="2" y="7" width="20" height="5"/></svg><span>积分核销</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg><span>消息推送</span></div>
+            <div class="nav-item active"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg><span>数据统计</span></div>
+            <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06"/></svg><span>系统管理</span></div>
+          </nav>
+        </div>
+        <div class="admin-main">
+          <div class="admin-topbar">
+            <div class="topbar-breadcrumb"><span class="bc-label">安全警示服务</span><span class="bc-sep">/</span><span class="bc-label">数据统计与可视化</span></div>
+            <div class="topbar-right"><span class="date-range">2026年度</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg><div class="topbar-avatar">A</div></div>
+          </div>
+          <div class="page-header">
+            <h2 class="page-title">数据统计与可视化</h2>
+            <div class="page-header-right">
+              <div class="tab-switcher">
+                <span class="tab-sw active">按月统计</span>
+                <span class="tab-sw">按季度</span>
+                <span class="tab-sw">按年度</span>
+              </div>
+            </div>
+          </div>
+          <!-- 图表区域 -->
+          <div class="chart-row">
+            <!-- 柱状图 -->
+            <div class="chart-card chart-main">
+              <div class="chart-title">月度打卡人次对比</div>
+              <div class="chart-area">
+                <svg width="100%" height="160" viewBox="0 0 480 160" preserveAspectRatio="none">
+                  <!-- 网格 -->
+                  <line x1="0" y1="0" x2="480" y2="0" stroke="#f0f2f5" stroke-width="1"/>
+                  <line x1="0" y1="40" x2="480" y2="40" stroke="#f0f2f5" stroke-width="1"/>
+                  <line x1="0" y1="80" x2="480" y2="80" stroke="#f0f2f5" stroke-width="1"/>
+                  <line x1="0" y1="120" x2="480" y2="120" stroke="#f0f2f5" stroke-width="1"/>
+                  <!-- 柱子 - 1月 -->
+                  <rect x="20" y="100" width="28" height="60" rx="3" fill="#3b82f6"/>
+                  <rect x="52" y="110" width="28" height="50" rx="3" fill="#93c5fd"/>
+                  <!-- 2月 -->
+                  <rect x="100" y="80" width="28" height="80" rx="3" fill="#3b82f6"/>
+                  <rect x="132" y="95" width="28" height="65" rx="3" fill="#93c5fd"/>
+                  <!-- 3月 -->
+                  <rect x="180" y="50" width="28" height="110" rx="3" fill="#3b82f6"/>
+                  <rect x="212" y="70" width="28" height="90" rx="3" fill="#93c5fd"/>
+                  <!-- 4月 -->
+                  <rect x="260" y="25" width="28" height="135" rx="3" fill="#3b82f6"/>
+                  <rect x="292" y="55" width="28" height="105" rx="3" fill="#93c5fd"/>
+                  <!-- 5月 -->
+                  <rect x="340" y="120" width="28" height="40" rx="3" fill="#e2e8f0" stroke="#d0d5dd" stroke-width="1" stroke-dasharray="3"/>
+                  <rect x="372" y="130" width="28" height="30" rx="3" fill="#e2e8f0" stroke="#d0d5dd" stroke-width="1" stroke-dasharray="3"/>
+                  <!-- 6月 -->
+                  <rect x="420" y="125" width="28" height="35" rx="3" fill="#e2e8f0" stroke="#d0d5dd" stroke-width="1" stroke-dasharray="3"/>
+                  <rect x="452" y="135" width="28" height="25" rx="3" fill="#e2e8f0" stroke="#d0d5dd" stroke-width="1" stroke-dasharray="3"/>
+                </svg>
+                <div class="chart-x-labels">
+                  <span>1月</span><span>2月</span><span>3月</span><span>4月</span><span>5月(预)</span><span>6月(预)</span>
+                </div>
+              </div>
+              <div class="chart-legend" style="margin-top:4px">
+                <span class="legend-item"><span class="legend-dot" style="background:#3b82f6"></span>打卡人次</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#93c5fd"></span>打卡人数(去重)</span>
+                <span class="legend-item"><span class="legend-dot" style="background:#e2e8f0;border:1px dashed #ccc"></span>预测值</span>
+              </div>
+            </div>
+            <!-- 饼图 + 区域表 -->
+            <div class="chart-card chart-side" style="display:flex;flex-direction:column;gap:8px">
+              <div class="chart-title">各区占比分布</div>
+              <!-- CSS饼图 -->
+              <div class="pie-chart-wrap">
+                <div class="pie-chart">
+                  <svg width="120" height="120" viewBox="0 0 120 120">
+                    <!-- 历下区 28% -->
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="#3b82f6" stroke-width="20" stroke-dasharray="87.96 226" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+                    <!-- 市中区 22% -->
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="#60a5fa" stroke-width="20" stroke-dasharray="69.12 226" stroke-dashoffset="-87.96" transform="rotate(-90 60 60)"/>
+                    <!-- 天桥区 18% -->
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="#93c5fd" stroke-width="20" stroke-dasharray="56.55 226" stroke-dashoffset="-157.08" transform="rotate(-90 60 60)"/>
+                    <!-- 槐荫区 15% -->
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="#bfdbfe" stroke-width="20" stroke-dasharray="47.12 226" stroke-dashoffset="-213.63" transform="rotate(-90 60 60)"/>
+                    <!-- 其他 17% -->
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="#e0ecff" stroke-width="20" stroke-dasharray="53.41 226" stroke-dashoffset="-260.75" transform="rotate(-90 60 60)"/>
+                  </svg>
+                </div>
+                <div class="pie-legend">
+                  <div class="pie-legend-item"><span class="legend-dot" style="background:#3b82f6"></span>历下区 28%</div>
+                  <div class="pie-legend-item"><span class="legend-dot" style="background:#60a5fa"></span>市中区 22%</div>
+                  <div class="pie-legend-item"><span class="legend-dot" style="background:#93c5fd"></span>天桥区 18%</div>
+                  <div class="pie-legend-item"><span class="legend-dot" style="background:#bfdbfe"></span>槐荫区 15%</div>
+                  <div class="pie-legend-item"><span class="legend-dot" style="background:#e0ecff"></span>其他 17%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="web-label">管理后台 - 数据统计</div>
+    <button class="download-btn" onclick="downloadPhone('web-statistics','管理后台_数据统计')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      下载 PNG
+    </button>
+  </div>
+
+</div><!-- end web-showcase -->
+
+<script src="app.js"></script>
+</body>
+</html>

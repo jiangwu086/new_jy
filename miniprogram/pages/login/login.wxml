@@ -1,0 +1,95 @@
+<view class="page">
+  <!-- 自定义导航栏：仅返回按钮，无标题 -->
+  <view class="custom-nav" style="padding-top:{{statusBarHeight}}px">
+    <view class="custom-nav-back" bindtap="goBack">
+      <view class="back-arrow"></view>
+    </view>
+  </view>
+
+  <!-- 顶部 Hero 图 -->
+  <view class="hero-wrap">
+    <image class="hero" src="/images/login_hero_ai.png" mode="aspectFill"/>
+    <view class="hero-mask-top"></view>
+    <view class="hero-mask-bottom"></view>
+  </view>
+
+  <!-- 主白卡 -->
+  <view class="card">
+    <view class="card-handle"></view>
+
+    <view class="card-head">
+      <view class="card-title">欢迎回来</view>
+      <view class="card-subtitle">登录后参与现场打卡、积分兑换</view>
+    </view>
+
+    <!-- 下划线 Tab -->
+    <view class="tabs">
+      <view class="tab-item {{activeTab==='wx'?'tab-active':''}}"
+            bindtap="switchTab" data-tab="wx">
+        <text class="tab-label">微信登录</text>
+        <view class="tab-bar"></view>
+      </view>
+      <view class="tab-item {{activeTab==='phone'?'tab-active':''}}"
+            bindtap="switchTab" data-tab="phone">
+        <text class="tab-label">手机号登录</text>
+        <view class="tab-bar"></view>
+      </view>
+    </view>
+
+    <!-- ══ 微信登录面板 ══ -->
+    <view wx:if="{{activeTab==='wx'}}" class="panel">
+      <button class="btn btn-wx {{wxLoading?'btn-loading':''}}"
+              open-type="getPhoneNumber"
+              bindgetphonenumber="onGetPhoneNumber"
+              disabled="{{!agreed || wxLoading}}">
+        <image wx:if="{{!wxLoading}}" class="btn-icon" src="/images/wechat-logo.png"/>
+        <view class="spin" wx:if="{{wxLoading}}"></view>
+        <text>{{wxLoading?'登录中…':'微信一键登录'}}</text>
+      </button>
+    </view>
+
+    <!-- ══ 手机号登录面板 ══ -->
+    <view wx:if="{{activeTab==='phone'}}" class="panel">
+      <view class="input-group">
+        <view class="input-box">
+          <text class="prefix">+86</text>
+          <view class="input-sep"></view>
+          <input class="inp" type="number" maxlength="11"
+                 placeholder="请输入手机号" placeholder-class="inp-ph"
+                 value="{{phone}}" bindinput="onPhoneInput"/>
+        </view>
+        <view class="input-box">
+          <input class="inp" type="number" maxlength="6"
+                 placeholder="请输入验证码" placeholder-class="inp-ph"
+                 value="{{smsCode}}" bindinput="onCodeInput"/>
+          <view class="code-pill {{(codeSending||countdown>0)?'code-pill-disabled':''}}"
+                bindtap="sendSmsCode">
+            {{countdown>0 ? countdown+'s' : codeSending ? '发送中' : '获取验证码'}}
+          </view>
+        </view>
+      </view>
+
+      <button class="btn btn-blue {{phoneLoading?'btn-loading':''}}"
+              disabled="{{phoneLoading||!agreed}}"
+              bindtap="doPhoneLogin">
+        <view class="spin" wx:if="{{phoneLoading}}"></view>
+        <text>{{phoneLoading?'登录中…':'登 录'}}</text>
+      </button>
+    </view>
+
+    <!-- 协议 -->
+    <view class="agree-row" bindtap="toggleAgreement">
+      <view class="agree-box {{agreed?'agree-box-on':''}}">
+        <view class="agree-tick" wx:if="{{agreed}}"></view>
+      </view>
+      <view class="agree-text">
+        <text class="agree-light">我已阅读并同意</text>
+        <text class="agree-link" catchtap="openService">《用户协议》</text>
+        <text class="agree-light">和</text>
+        <text class="agree-link" catchtap="openPrivacy">《隐私政策》</text>
+      </view>
+    </view>
+
+    <view class="skip" bindtap="goBack">暂不登录，先去逛逛</view>
+  </view>
+</view>

@@ -1,0 +1,53 @@
+<view class="map-page-container">
+  <!-- 顶部搜索 -->
+  <view class="map-search" bindtap="goToSearch">
+    <view class="search-inner">
+      <icon type="search" size="14" color="#999"/>
+      <text>搜索教育点位</text>
+    </view>
+  </view>
+
+  <!-- 顶部地图区域 -->
+  <view class="map-area">
+    <map 
+      wx:if="{{!isMac}}"
+      id="eduMap" 
+      longitude="{{longitude}}" 
+      latitude="{{latitude}}" 
+      scale="14" 
+      markers="{{markers}}" 
+      bindmarkertap="onMarkerTap"
+      class="map-component"
+    ></map>
+    <view wx:else class="map-placeholder">
+      <view class="map-ph-icon">
+        <icon type="info" size="36" color="#93c5fd"/>
+      </view>
+      <text class="map-placeholder-text">真机可正常渲染地图</text>
+    </view>
+  </view>
+
+  <!-- 底部点位列表卡片区域 -->
+  <scroll-view class="map-card-list" scroll-x="false" scroll-y="true" scroll-into-view="{{scrollToId}}" scroll-with-animation="true">
+    <!-- 有数据时渲染卡片 -->
+    <view class="map-card" wx:for="{{locations}}" wx:key="id" id="card-{{item.id}}" bindtap="goToDetail" data-id="{{item.id}}">
+      <view class="map-card-header">
+        <view class="map-card-name">{{item.name}}</view>
+        <view class="map-card-dist">{{item.distance}}</view>
+      </view>
+      <view class="map-card-addr">{{item.address}}</view>
+      <view class="map-card-footer">
+        <text class="map-tag {{item.isOpen ? 'open' : 'closed'}}">{{item.isOpen ? '开放中' : '休息中'}}</text>
+        <text class="map-card-time">{{item.time}}</text>
+        <button class="nav-btn" data-loc="{{item}}" catchtap="startNav">导航</button>
+      </view>
+    </view>
+
+    <!-- 空状态占位 -->
+    <view class="map-empty" wx:if="{{locations.length === 0 && !loading}}">
+      <image class="map-empty-img" src="/images/empty_location.svg" mode="aspectFit"/>
+      <view class="map-empty-text">暂无教育点位</view>
+      <view class="map-empty-sub">可在管理后台添加点位</view>
+    </view>
+  </scroll-view>
+</view>

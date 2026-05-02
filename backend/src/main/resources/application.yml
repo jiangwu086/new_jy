@@ -1,0 +1,117 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: new-jy-backend
+
+  # 文件上传大小（默认 1MB / 10MB，微信拍照可能超 1MB）
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  # Jackson 日期序列化：LocalDateTime → "2026-04-01 10:30:00" 字符串，而非数组
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+
+  # PostgreSQL 数据库配置
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    # 请根据您的实际 PG 数据库调整
+    url: jdbc:postgresql://localhost:5432/jy_safety
+    username: postgres
+    password: password
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+
+  # Redis 配置 (用于并发防刷锁、状态缓存)
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: ""
+      database: 0
+
+# MyBatis-Plus 配置
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.chocwell.jy.entity
+  global-config:
+    db-config:
+      # 全局主键使用数据库序列自动增长（对应 PostgreSQL 的 BIGSERIAL）
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# ─── 业务自定义配置 ────────────────────────────────────────────
+app:
+  # ── 微信小程序 ──────────────────────────────────────────────
+  wx:
+    appid: wxc6baae0e8851c6c7
+    secret: 22ca676d65ef05f67545023aa67b5beb
+    # ⚠️ 在微信公众平台"订阅消息"中申请模板后，将模板ID填入下方
+    # 微信公众平台地址：https://mp.weixin.qq.com → 功能 → 订阅消息
+    tmpl-checkin: "YsrXmHlp_saK8CNnl_HttHQ-kLHkDpb9o2oPgcrMJiw"   # 打卡成功通知 模板ID
+    tmpl-gift:    "cQ5oalByIPAaIq0Hwl10Df1w2pCJxgJ7tZrei_c37oM"   # 礼品兑换成功通知 模板ID
+
+  # ── JWT ────────────────────────────────────────────────────
+  jwt:
+    secret: change_this_to_a_long_random_secret_string_in_production  # ⚠️ 生产必须换强随机值
+    expire-days: 30        # token 有效天数
+
+  # ── 阿里云短信 ──────────────────────────────────────────────
+  # 控制台：https://dysms.console.aliyun.com
+  # 实际凭证由 docker-compose.yml 的 environment 块注入,密钥不进 git
+  # 凭证未注入时进入开发模式：不真实发送，验证码打日志，固定接受 000000
+  sms:
+    access-key-id:           ${ALIYUN_SMS_ACCESS_KEY_ID:your_aliyun_access_key_id}
+    access-key-secret:       ${ALIYUN_SMS_ACCESS_KEY_SECRET:your_aliyun_access_key_secret}
+    sign-name:               ${ALIYUN_SMS_SIGN_NAME:你的短信签名}
+    template-code-register:  ${ALIYUN_SMS_TEMPLATE_CODE_REGISTER:}    # 注册/登录模板
+    template-code-reset:     ${ALIYUN_SMS_TEMPLATE_CODE_RESET:}       # 重置/换绑模板
+
+  # ── 阿里云对象存储 OSS ───────────────────────────────────────
+  # 控制台：https://oss.console.aliyun.com
+  # 实际凭证由 docker-compose.yml 的 environment 块通过环境变量注入，密钥不进 git
+  # 凭证未注入时 OssService 自动 fallback 到本地 /app/uploads，业务代码无感
+  oss:
+    enabled:           ${OSS_ENABLED:false}
+    endpoint:          ${OSS_ENDPOINT:oss-cn-beijing.aliyuncs.com}
+    access-key-id:     ${OSS_ACCESS_KEY_ID:}
+    access-key-secret: ${OSS_ACCESS_KEY_SECRET:}
+    bucket-name:       ${OSS_BUCKET:}
+    domain:            ${OSS_DOMAIN:}                 # 自定义 CDN 域名，留空用 https://{bucket}.{endpoint}
+
+# ─── Swagger / OpenAPI 配置 ───────────────────────────────────
+# 文档页面：http://localhost:8080/swagger-ui/index.html
+# JSON 规范：http://localhost:8080/v3/api-docs
+# ⚠️ 生产环境建议设置 springdoc.api-docs.enabled=false
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui/index.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  # 将 Swagger 路径排除在用户鉴权拦截之外
+  packages-to-scan: com.chocwell.jy.controller
+
+# ─── 监控端点配置 ──────────────────────────────────────────────
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics

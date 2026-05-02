@@ -1,0 +1,33 @@
+<view class="container">
+  <view class="search-header">
+    <view class="search-box">
+      <icon type="search" size="16" color="#999"/>
+      <input 
+        class="search-input" 
+        placeholder="搜索教育点位名称或地址" 
+        auto-focus 
+        bindinput="onInput"
+        bindconfirm="doSearch"
+        confirm-type="search"
+      />
+    </view>
+    <view class="cancel-text" bindtap="goBack">取消</view>
+  </view>
+
+  <view class="search-results" wx:if="{{hasSearched}}">
+    <view class="point-card" wx:for="{{results}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+      <view class="point-info">
+        <view class="point-name">{{item.name}}</view>
+        <view class="point-addr">{{item.address}}</view>
+      </view>
+      <view class="point-status open">开放中</view>
+    </view>
+    
+    <!-- 空状态 -->
+    <view class="empty-box" wx:if="{{results.length === 0}}">
+      <image class="empty-img" src="/images/empty_search.svg" mode="aspectFit"/>
+      <view class="empty-text">未找到相关点位</view>
+      <view class="empty-sub">换个关键词试试</view>
+    </view>
+  </view>
+</view>

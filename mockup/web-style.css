@@ -1,0 +1,783 @@
+/**
+ * 文件用途：管理后台Web页面展示 - 样式表
+ * 功能说明：管理后台面板布局、侧边栏、数据卡片、表格、图表等样式
+ * 作者：AI Assistant
+ * 创建日期：2026-04-07
+ */
+
+/* ==================== Web展示区域 ==================== */
+.web-showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 30px 40px 60px;
+}
+
+.web-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.web-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #4a5568;
+  letter-spacing: 0.5px;
+}
+
+/* 截图容器 - 透明背景 */
+.web-container {
+  padding: 12px;
+  background: transparent;
+}
+
+/* ==================== 管理面板整体布局 ==================== */
+.admin-panel {
+  width: 820px;
+  height: 520px;
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  border: 1px solid #e2e8f0;
+}
+
+/* ==================== 左侧导航栏 ==================== */
+.admin-sidebar {
+  width: 180px;
+  background: #1a1f36;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.sidebar-user {
+  padding: 10px 14px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 8px 0;
+  overflow-y: auto;
+}
+
+.sidebar-nav .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+  cursor: pointer;
+  transition: all 0.15s;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-nav .nav-item:hover {
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.04);
+}
+
+.sidebar-nav .nav-item.active {
+  color: #fff;
+  background: rgba(59, 130, 246, 0.15);
+  border-left-color: #3b82f6;
+}
+
+/* ==================== 右侧主区域 ==================== */
+.admin-main {
+  flex: 1;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 顶部栏 */
+.admin-topbar {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: #fff;
+  border-bottom: 1px solid #e8ecef;
+  flex-shrink: 0;
+}
+
+.topbar-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bc-label {
+  font-size: 12px;
+  color: #8892a4;
+}
+
+.bc-sep {
+  font-size: 11px;
+  color: #ccc;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: #f5f6fa;
+  border-radius: 6px;
+  font-size: 11px;
+  color: #aaa;
+}
+
+.topbar-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #3b82f6;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ==================== 页面标题栏 ==================== */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px 10px;
+  flex-shrink: 0;
+}
+
+.page-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.page-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.date-range {
+  font-size: 11px;
+  color: #8892a4;
+  padding: 4px 10px;
+  background: #fff;
+  border: 1px solid #e8ecef;
+  border-radius: 6px;
+}
+
+.export-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ==================== 数据统计卡片 ==================== */
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px;
+  border: 1px solid #e8ecef;
+}
+
+.sc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.sc-title {
+  font-size: 11px;
+  color: #8892a4;
+  font-weight: 500;
+}
+
+.sc-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sc-icon-blue { background: #3b82f6; }
+.sc-icon-green { background: #10b981; }
+.sc-icon-amber { background: #f59e0b; }
+.sc-icon-purple { background: #8b5cf6; }
+
+.sc-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+
+.sc-trend {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.sc-trend.up { color: #10b981; }
+.sc-trend.down { color: #ef4444; }
+
+/* ==================== 图表区域 ==================== */
+.chart-row {
+  display: flex;
+  gap: 12px;
+  padding: 12px 20px;
+  flex: 1;
+  min-height: 0;
+}
+
+.chart-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px;
+  border: 1px solid #e8ecef;
+}
+
+.chart-main { flex: 1.6; display: flex; flex-direction: column; }
+.chart-side { flex: 1; display: flex; flex-direction: column; }
+
+.chart-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: #8892a4;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.chart-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-x-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #aab0bc;
+  padding: 4px 0 0;
+}
+
+/* 排行榜 */
+.rank-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.rank-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rank-name {
+  font-size: 11px;
+  color: #4a5568;
+  width: 42px;
+  flex-shrink: 0;
+}
+
+.rank-bar-bg {
+  flex: 1;
+  height: 8px;
+  background: #f0f2f5;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.rank-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border-radius: 4px;
+}
+
+.rank-val {
+  font-size: 11px;
+  font-weight: 600;
+  color: #3b82f6;
+  width: 38px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ==================== 数据表格 ==================== */
+.data-table-wrap {
+  flex: 1;
+  overflow: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.data-table th {
+  background: #f8fafc;
+  padding: 8px 10px;
+  text-align: left;
+  font-weight: 600;
+  color: #4a5568;
+  border-bottom: 1px solid #e8ecef;
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 8px 10px;
+  color: #2d3748;
+  border-bottom: 1px solid #f0f2f5;
+  white-space: nowrap;
+}
+
+.data-table.compact th,
+.data-table.compact td {
+  padding: 6px 8px;
+  font-size: 11px;
+}
+
+/* 状态标签 */
+.status-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.status-tag.pending {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.status-tag.done {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+/* 小按钮 */
+.btn-sm {
+  padding: 4px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #8892a4;
+  border: 1px solid #d0d5dd;
+}
+
+/* 分页 */
+.table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  font-size: 11px;
+  color: #8892a4;
+}
+
+.pagi-btns {
+  display: flex;
+  gap: 4px;
+}
+
+.pagi-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid #e8ecef;
+  font-size: 11px;
+  color: #4a5568;
+  cursor: pointer;
+}
+
+.pagi-btn.active {
+  background: #3b82f6;
+  color: #fff;
+  border-color: #3b82f6;
+}
+
+/* ==================== 积分核销页面 ==================== */
+.redeem-content {
+  display: flex;
+  gap: 16px;
+  padding: 0 20px 20px;
+  flex: 1;
+  min-height: 0;
+  align-items: flex-start;
+}
+
+.redeem-content .data-table-wrap {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e8ecef;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* 二维码弹窗 */
+.qr-popup {
+  width: 140px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px;
+  border: 1px solid #e8ecef;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  flex-shrink: 0;
+}
+
+.qr-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 10px;
+}
+
+.qr-code-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid #e8ecef;
+  border-radius: 6px;
+}
+
+/* ==================== 消息推送页面 ==================== */
+.push-layout {
+  display: flex;
+  gap: 14px;
+  padding: 0 20px 20px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* 区域选择 */
+.push-region {
+  width: 160px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e8ecef;
+  padding: 12px;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+
+.region-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.region-tree { display: flex; flex-direction: column; gap: 2px; }
+
+.tree-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #4a5568;
+  padding: 4px 2px;
+}
+
+.tree-item.child { padding-left: 22px; }
+
+.tree-check {
+  width: 14px;
+  height: 14px;
+  accent-color: #3b82f6;
+  flex-shrink: 0;
+}
+
+/* 消息编辑区 */
+.push-editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.editor-section {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e8ecef;
+  padding: 12px;
+}
+
+.editor-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 10px;
+}
+
+.editor-textarea {
+  width: 100%;
+  min-height: 60px;
+  padding: 10px;
+  background: #f8fafc;
+  border: 1px solid #e8ecef;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #4a5568;
+  margin-bottom: 10px;
+}
+
+.editor-options {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.opt-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #4a5568;
+  cursor: pointer;
+}
+
+.editor-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 推送记录 */
+.push-records {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e8ecef;
+  padding: 12px;
+  overflow: hidden;
+}
+
+/* ==================== 教育点管理 / 打卡记录 新增样式 ==================== */
+
+/* 内容滚动区域 */
+.content-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 12px;
+}
+
+/* 筛选栏 */
+.filter-bar {
+  padding: 0 20px 10px;
+  flex-shrink: 0;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-select {
+  padding: 5px 10px;
+  border: 1px solid #e8ecef;
+  border-radius: 6px;
+  font-size: 11px;
+  color: #4a5568;
+  background: #fff;
+  font-family: inherit;
+  outline: none;
+}
+
+.filter-input {
+  padding: 5px 10px;
+  border: 1px solid #e8ecef;
+  border-radius: 6px;
+  font-size: 11px;
+  color: #4a5568;
+  background: #fff;
+  font-family: inherit;
+  outline: none;
+  width: 140px;
+}
+
+/* 状态圆点 */
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.status-dot.open { background: #10b981; }
+.status-dot.closed { background: #ef4444; }
+
+/* 文字颜色 */
+.text-blue { color: #3b82f6; font-weight: 600; }
+
+/* 照片缩略图 */
+.photo-thumb {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  background: #e8ecef;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.photo-thumb::after {
+  content: '';
+  width: 14px;
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23aaa' stroke-width='1.5'%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3Ccircle cx='8.5' cy='8.5' r='1.5'/%3E%3Cpolyline points='21,15 16,10 5,21'/%3E%3C/svg%3E");
+  background-size: contain;
+}
+
+/* ==================== 数据统计页 新增样式 ==================== */
+
+/* Tab切换器 */
+.tab-switcher {
+  display: flex;
+  background: #fff;
+  border: 1px solid #e8ecef;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.tab-sw {
+  padding: 4px 12px;
+  font-size: 11px;
+  color: #8892a4;
+  cursor: pointer;
+  border-right: 1px solid #e8ecef;
+}
+
+.tab-sw:last-child { border-right: none; }
+
+.tab-sw.active {
+  background: #3b82f6;
+  color: #fff;
+}
+
+/* 饼图 */
+.pie-chart-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+
+.pie-chart {
+  flex-shrink: 0;
+}
+
+.pie-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pie-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #4a5568;
+}
+

@@ -1,0 +1,103 @@
+<view class="container">
+
+  <!-- ── 状态展示区（已提交过的） ── -->
+  <block wx:if="{{verifyStatus === 1}}">
+    <!-- 审核中 -->
+    <view class="status-box">
+      <view class="status-icon">
+        <image src="/images/status_pending.svg" style="width:120rpx;height:120rpx" mode="aspectFit"/>
+      </view>
+      <view class="status-title">审核中</view>
+      <view class="status-desc">您的实名信息已提交，工作人员将在 1-3 个工作日内完成审核，请耐心等待。</view>
+      <view class="info-card">
+        <view class="info-row">
+          <text class="info-label">姓名</text>
+          <text class="info-val">{{realName}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">身份证</text>
+          <text class="info-val">{{idCardMasked}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:elif="{{verifyStatus === 2}}">
+    <!-- 已通过 -->
+    <view class="status-box">
+      <view class="status-icon">
+        <image src="/images/status_verified.svg" style="width:120rpx;height:140rpx" mode="aspectFit"/>
+      </view>
+      <view class="status-title passed">认证已通过</view>
+      <view class="status-desc">您的实名认证已通过审核，可正常参与打卡和积分兑换。</view>
+      <view class="info-card">
+        <view class="info-row">
+          <text class="info-label">姓名</text>
+          <text class="info-val">{{realName}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">身份证</text>
+          <text class="info-val">{{idCardMasked}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:elif="{{verifyStatus === 3}}">
+    <!-- 已拒绝 -->
+    <view class="status-box">
+      <view class="status-icon">
+        <image src="/images/status_rejected.svg" style="width:120rpx;height:140rpx" mode="aspectFit"/>
+      </view>
+      <view class="status-title rejected">审核未通过</view>
+      <view class="reject-reason">拒绝原因：{{rejectReason || '信息不符，请重新提交'}}</view>
+      <button class="primary-btn" bindtap="resubmit">重新提交认证</button>
+    </view>
+  </block>
+
+  <block wx:else>
+    <!-- 未提交 / 填写表单 -->
+    <block wx:if="{{!isVerifying}}">
+      <view class="status-box">
+        <view class="status-icon">
+          <image src="/images/status_unverified.svg" style="width:120rpx;height:140rpx" mode="aspectFit"/>
+        </view>
+        <view class="status-title">尚未实名认证</view>
+        <view class="status-desc">为了保障您的劳动者权益并正常参与打卡和积分兑换，请先完成本人身份核验。</view>
+        <button class="primary-btn" bindtap="startVerify">立即去认证</button>
+      </view>
+    </block>
+
+    <block wx:else>
+      <view class="auth-header">
+        <view class="auth-title">实名认证</view>
+        <view class="auth-desc">请填写本人真实姓名和身份证号，提交后将由工作人员审核。</view>
+      </view>
+
+      <view class="form-group">
+        <view class="form-item">
+          <text class="label">真实姓名</text>
+          <input placeholder="请输入与身份证一致的姓名" class="input"
+                 value="{{realName}}" bindinput="onNameInput"/>
+        </view>
+        <view class="form-item">
+          <text class="label">身份证号</text>
+          <input placeholder="请输入18位身份证号码" type="idcard"
+                 maxlength="18" class="input" value="{{idCard}}" bindinput="onIdCardInput"/>
+        </view>
+      </view>
+
+      <view class="auth-tips">
+        <view class="tip-title">认证用途</view>
+        <view class="tip-text">用于确认本人参与现场教育打卡，防止冒名、代打卡和积分异常。审核通过后即可正常打卡。</view>
+      </view>
+
+      <button class="submit-btn {{submitting ? 'btn-loading' : ''}}"
+              disabled="{{submitting}}" bindtap="submitAuth">
+        <view class="btn-spin" wx:if="{{submitting}}"></view>
+        <text>{{submitting ? '提交中...' : '提交认证'}}</text>
+      </button>
+    </block>
+  </block>
+
+</view>

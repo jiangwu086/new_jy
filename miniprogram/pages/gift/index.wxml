@@ -1,0 +1,56 @@
+<view class="container">
+  <!-- 顶部积分概览 -->
+  <view class="score-header">
+    <view class="score-label">当前可用积分</view>
+    <view class="score-val">{{usablePoints}}</view>
+    <view class="score-hint">积分可在此页面兑换礼品，兑换后凭截图到教育点领取</view>
+  </view>
+
+  <!-- 骨架屏 -->
+  <skeleton show="{{loading}}" type="gift"></skeleton>
+
+  <!-- 礼品列表 -->
+  <view wx:if="{{!loading && giftList.length > 0}}">
+    <view class="gift-card" wx:for="{{giftList}}" wx:key="id">
+      <!-- 礼品图片/占位 -->
+      <view class="gift-img-wrap">
+        <image wx:if="{{item.imageUrl}}" src="{{item.imageUrl}}" class="gift-img" mode="aspectFill"/>
+        <view wx:else class="gift-img-placeholder">
+          <text class="gift-ph-text">礼</text>
+        </view>
+        <view class="stock-badge {{item.stockOut ? 'out' : ''}}">{{item.stockText}}</view>
+      </view>
+
+      <!-- 礼品信息 -->
+      <view class="gift-body">
+        <view class="gift-name">{{item.name}}</view>
+        <view class="gift-desc" wx:if="{{item.description}}">{{item.description}}</view>
+        <view class="gift-footer">
+          <view class="gift-points">
+            <text class="points-num">{{item.pointsCost}}</text>
+            <text class="points-unit"> 积分</text>
+          </view>
+          <button
+            class="exchange-btn {{(!item.canExchange || item.stockOut) ? 'disabled' : ''}}"
+            data-id="{{item.id}}"
+            data-pointscost="{{item.pointsCost}}"
+            data-name="{{item.name}}"
+            data-stockout="{{item.stockOut}}"
+            bindtap="exchangeGift"
+          >
+            <text wx:if="{{item.stockOut}}">已抢完</text>
+            <text wx:elif="{{!item.canExchange}}">积分不足</text>
+            <text wx:else>立即兑换</text>
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-box" wx:if="{{!loading && giftList.length === 0}}">
+    <image class="empty-img" src="/images/empty_article.svg" mode="aspectFit"/>
+    <view class="empty-text">暂无可兑换礼品</view>
+    <view class="empty-sub">努力打卡积累积分，礼品即将上线</view>
+  </view>
+</view>

@@ -1,0 +1,32 @@
+# Docker 环境配置 —— 覆盖 application.yml 中的 localhost 连接
+spring:
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:postgres}:${DB_PORT:5432}/${DB_NAME:jy_safety}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASS:jy_pass_2026}
+
+  data:
+    redis:
+      host:     ${REDIS_HOST:redis}
+      port:     ${REDIS_PORT:6379}
+      password: ${REDIS_PASS:jy_redis_2026}
+
+app:
+  wx:
+    appid:       ${WX_APPID:wx_your_appid_here}
+    secret:      ${WX_SECRET:your_appsecret_here}
+    tmpl-checkin: ${WX_TMPL_CHECKIN:}   # 打卡成功通知 模板ID（留空则不推送）
+    tmpl-gift:    ${WX_TMPL_GIFT:}      # 礼品兑换成功通知 模板ID（留空则不推送）
+  jwt:
+    secret: ${JWT_SECRET:change_this_to_a_strong_random_secret_in_production}
+
+# 生产环境关掉 SQL 日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl

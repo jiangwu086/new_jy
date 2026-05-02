@@ -1,0 +1,33 @@
+<view class="camera-container">
+  <!-- 提示栏 -->
+  <view class="photo-hint">
+    <text>请确保本人与教育点工作人员同框</text>
+  </view>
+
+  <camera 
+    device-position="front" 
+    flash="off" 
+    binderror="error" 
+    class="camera-view"
+  >
+    <!-- 人形辅助线 -->
+    <cover-view class="camera-silhouette">
+      <!-- 用边框模拟辅助线，小程序中 cover-image 或 cover-view -->
+      <cover-view class="outline-box"></cover-view>
+    </cover-view>
+
+    <!-- 水印区域 -->
+    <cover-view class="watermark">
+      <cover-view class="watermark-text">GPS: {{longitude}}°E, {{latitude}}°N</cover-view>
+      <cover-view class="watermark-text">时间: {{currentTime}}</cover-view>
+      <cover-view class="watermark-text">打卡: {{locationName}}</cover-view>
+    </cover-view>
+  </camera>
+
+  <!-- 底部操作区 -->
+  <view class="photo-controls">
+    <button class="shutter-btn" bindtap="takePhoto">
+      <view class="shutter-inner"></view>
+    </button>
+  </view>
+</view>

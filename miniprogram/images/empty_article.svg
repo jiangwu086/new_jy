@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- 文档背景 -->
+  <rect x="38" y="28" width="108" height="134" rx="10" fill="#EEF3FF"/>
+  <!-- 折角 -->
+  <path d="M122 28 L146 52 L122 52 Z" fill="#C9D8F8"/>
+  <rect x="122" y="28" width="24" height="24" rx="0" fill="#EEF3FF"/>
+  <path d="M122 28 L122 52 L146 52" fill="none" stroke="#C9D8F8" stroke-width="2"/>
+  <!-- 文字行 -->
+  <rect x="56" y="72" width="72" height="7" rx="3.5" fill="#B8CAF5"/>
+  <rect x="56" y="89" width="72" height="7" rx="3.5" fill="#B8CAF5"/>
+  <rect x="56" y="106" width="52" height="7" rx="3.5" fill="#D0DCF9"/>
+  <rect x="56" y="123" width="62" height="7" rx="3.5" fill="#D0DCF9"/>
+  <!-- 中间问号圆圈 -->
+  <circle cx="100" cy="50" r="13" fill="#DAE5FD"/>
+  <text x="100" y="55.5" text-anchor="middle" font-size="17" fill="#7096DE" font-family="Arial,sans-serif" font-weight="700">?</text>
+</svg>
