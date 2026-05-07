@@ -18,12 +18,11 @@ Page({
   // tab 切换不会重新触发 onLoad，必须在 onShow 里再拉一次，
   // 否则管理后台新加的点位在地图页永远看不到
   onShow() {
-    this.loadLocations()
+    this.loadLocations({ silent: true })
   },
 
   onPullDownRefresh() {
-    this.loadLocations()
-    setTimeout(() => wx.stopPullDownRefresh(), 1200)
+    this.loadLocations({ manual: true })
   },
 
   initLocation() {
@@ -37,26 +36,61 @@ Page({
     })
   },
 
-  loadLocations() {
-    wx.showLoading({ title: '加载中' })
+  /**
+   * 拉取教育点列表
+   * @param {object} opts
+   * @param {boolean} opts.manual - 用户主动下拉刷新，给 toast 反馈
+   * @param {boolean} opts.silent - 后台刷新（onShow），不弹 loading
+   */
+  loadLocations(opts = {}) {
+    const { manual = false, silent = false } = opts
+    if (!silent && !manual) wx.showLoading({ title: '加载中' })
+    if (manual) wx.showNavigationBarLoading()
+
     get('/api/v1/locations', {}, { noRetry: true }).then(res => {
-      wx.hideLoading()
-      const locations = (res.data || []).map(loc => ({
+      const raw = res.data || []
+      console.log('[map] /api/v1/locations 返回', raw.length, '条:', raw)
+
+      const locations = raw.map(loc => ({
         ...loc,
         isOpen: loc.status === 1,
         longitude: parseFloat(loc.longitude),
         latitude: parseFloat(loc.latitude)
       }))
-      const markers = locations.map(loc => ({
-        id: Number(loc.id),
-        latitude: loc.latitude,
-        longitude: loc.longitude,
-        title: loc.name,
-        width: 32,
-        height: 32
-      }))
+      const markers = locations
+        .filter(l => !isNaN(l.longitude) && !isNaN(l.latitude))
+        .map(loc => ({
+          id: Number(loc.id),
+          latitude: loc.latitude,
+          longitude: loc.longitude,
+          title: loc.name,
+          width: 32,
+          height: 32
+        }))
       this.setData({ locations, markers, loading: false })
-    }).catch(() => { wx.hideLoading(); this.setData({ loading: false }) })
+
+      if (manual) {
+        wx.showToast({
+          title: locations.length > 0 ? `已刷新 ${locations.length} 个点位` : '暂无点位',
+          icon: 'none',
+          duration: 1500
+        })
+      }
+    }).catch(err => {
+      console.error('[map] 加载点位失败', err)
+      this.setData({ loading: false })
+      wx.showToast({
+        title: '加载失败：' + (err && err.message || '网络异常'),
+        icon: 'none',
+        duration: 2500
+      })
+    }).finally(() => {
+      if (!silent && !manual) wx.hideLoading()
+      if (manual) {
+        wx.hideNavigationBarLoading()
+        wx.stopPullDownRefresh()
+      }
+    })
   },
 
   onMarkerTap(e) {
