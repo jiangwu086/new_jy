@@ -15,6 +15,17 @@ Page({
     this.loadLocations()
   },
 
+  // tab 切换不会重新触发 onLoad，必须在 onShow 里再拉一次，
+  // 否则管理后台新加的点位在地图页永远看不到
+  onShow() {
+    this.loadLocations()
+  },
+
+  onPullDownRefresh() {
+    this.loadLocations()
+    setTimeout(() => wx.stopPullDownRefresh(), 1200)
+  },
+
   initLocation() {
     const { platform } = wx.getDeviceInfo()
     if (platform === 'devtools' || platform === 'mac' || platform === 'windows') return
