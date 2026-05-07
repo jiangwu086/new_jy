@@ -4,14 +4,6 @@
   padding-bottom: 120rpx;
 }
 
-.loc-banner {
-  width: 100%;
-  height: 400rpx;
-  background-color: #e2e8f0;
-  display: flex;
-  justify-content: center;
-}
-
 .loc-header {
   background-color: #fff;
   padding: 40rpx 30rpx;
@@ -82,56 +74,20 @@
   line-height: 1.8;
 }
 
-.bottom-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 120rpx;
-  background-color: #fff;
-  display: flex;
-  align-items: center;
-  padding: 0 30rpx;
-  box-shadow: 0 -4rpx 20rpx rgba(0,0,0,0.05);
-  box-sizing: border-box;
-}
-
-.nav-btn {
-  width: 100%;
-  height: 88rpx;
-  line-height: 88rpx;
-  background-color: #3b82f6;
-  color: #fff;
-  font-size: 32rpx;
-  border-radius: 44rpx;
-}
-
-.loc-banner {
-  height: 160rpx;
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.status-badge {
-  padding: 8rpx 32rpx;
-  border-radius: 40rpx;
-  font-size: 26rpx;
-  color: #fff;
-  background: rgba(255,255,255,0.25);
-}
-.status-badge.open { background: rgba(16,185,129,0.7); }
-.status-badge.closed { background: rgba(239,68,68,0.7); }
+/* 底部按钮组：透明悬浮，不再带白色面板和阴影 */
 .bottom-bar {
   position: fixed;
   bottom: 0;
   left: 0; right: 0;
   padding: 20rpx 32rpx;
   padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
-  background: #fff;
-  border-top: 1rpx solid #eee;
+  background: transparent;
   display: flex;
   gap: 20rpx;
+  pointer-events: none;     /* 容器不拦截滑动，只让按钮自身可点 */
+}
+.bottom-bar .nav-btn {
+  pointer-events: auto;
 }
 .nav-btn {
   flex: 1;
