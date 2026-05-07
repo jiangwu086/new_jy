@@ -97,19 +97,19 @@ public class WxApiService {
         String accessToken = getAccessToken();
         String url = "https://api.weixin.qq.com/wxa/business/getuserphonenumber?access_token=" + accessToken;
 
-        Map<String, String> body = new HashMap<>();
-        body.put("code", phoneCode);
+        // 微信 API 严格只收 application/json + 标准 JSON 字符串。
+        // 之前用 Map<String,String> + 显式 JSON header 仍然 412，
+        // 推测 Spring 的 HttpMessageConverter 选择对 Map<String,String> 的处理路径不稳定。
+        // 直接构造 JSON 字符串走 StringHttpMessageConverter，最稳。
+        String jsonBody = "{\"code\":\"" + phoneCode + "\"}";
 
-        // ⚠️ RestTemplate 默认会把 Map<String,String> 走 FormHttpMessageConverter
-        // 序列化为 application/x-www-form-urlencoded（code=xxx），微信 API
-        // 只接 application/json 否则返回 412 Precondition Failed [no body]。
-        // 这里用 HttpEntity 显式声明 Content-Type=application/json。
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<Map<String, String>> entity = new HttpEntity<>(body, headers);
+        HttpEntity<String> entity = new HttpEntity<>(jsonBody, headers);
 
+        log.info("调微信 getuserphonenumber, body={}", jsonBody);
         String resp = restTemplate.postForObject(url, entity, String.class);
-        log.debug("getuserphonenumber response: {}", resp);
+        log.info("getuserphonenumber response: {}", resp);
 
         try {
             JsonNode node = objectMapper.readTree(resp);
