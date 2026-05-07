@@ -57,7 +57,6 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents",
   "permission": {
     "scope.userLocation": {
       "desc": "您的位置信息将用于推荐附近的教育点及打卡测距"
