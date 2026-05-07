@@ -12,13 +12,34 @@
     <image class="banner-image" src="/images/home_banner_ai.jpg" mode="aspectFill"></image>
   </view>
 
-  <!-- 实名认证提醒 -->
-  <view class="auth-reminder" wx:if="{{isLogin && !isVerified}}" bindtap="goToAuth">
+  <!-- 实名认证状态横幅
+       verifyStatus: 0未提交 1审核中 2已通过(不展示) 3已拒绝 -->
+
+  <!-- 0：未提交 -->
+  <view class="auth-reminder" wx:if="{{isLogin && verifyStatus === 0}}" bindtap="goToAuth">
     <view class="auth-reminder-left">
       <view class="auth-reminder-title">尚未实名认证</view>
-      <view class="auth-reminder-desc">打卡、积分兑换前需完成人脸识别核验</view>
+      <view class="auth-reminder-desc">打卡、积分兑换前需完成本人实名认证</view>
     </view>
     <view class="auth-reminder-action">去认证</view>
+  </view>
+
+  <!-- 1：审核中（不可点，不引导用户重复提交） -->
+  <view class="auth-reminder pending" wx:elif="{{isLogin && verifyStatus === 1}}">
+    <view class="auth-reminder-left">
+      <view class="auth-reminder-title">实名认证审核中</view>
+      <view class="auth-reminder-desc">通常 1 个工作日内完成审核，请耐心等待</view>
+    </view>
+    <view class="auth-reminder-action pending">审核中</view>
+  </view>
+
+  <!-- 3：已拒绝 -->
+  <view class="auth-reminder rejected" wx:elif="{{isLogin && verifyStatus === 3}}" bindtap="goToAuth">
+    <view class="auth-reminder-left">
+      <view class="auth-reminder-title">实名认证未通过</view>
+      <view class="auth-reminder-desc">请重新提交认证资料</view>
+    </view>
+    <view class="auth-reminder-action rejected">重新认证</view>
   </view>
 
   <!-- 功能入口 -->
