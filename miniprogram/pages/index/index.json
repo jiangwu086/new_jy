@@ -3,7 +3,8 @@
   "navigationBarBackgroundColor": "#3b82f6",
   "navigationBarTextStyle": "white",
   "enablePullDownRefresh": true,
-  "backgroundTextStyle": "light",
+  "backgroundTextStyle": "dark",
+  "backgroundColor": "#f5f7fa",
   "usingComponents": {
     "skeleton": "/components/skeleton/skeleton"
   }
