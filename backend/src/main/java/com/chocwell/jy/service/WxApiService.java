@@ -4,6 +4,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -97,7 +100,15 @@ public class WxApiService {
         Map<String, String> body = new HashMap<>();
         body.put("code", phoneCode);
 
-        String resp = restTemplate.postForObject(url, body, String.class);
+        // ⚠️ RestTemplate 默认会把 Map<String,String> 走 FormHttpMessageConverter
+        // 序列化为 application/x-www-form-urlencoded（code=xxx），微信 API
+        // 只接 application/json 否则返回 412 Precondition Failed [no body]。
+        // 这里用 HttpEntity 显式声明 Content-Type=application/json。
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Map<String, String>> entity = new HttpEntity<>(body, headers);
+
+        String resp = restTemplate.postForObject(url, entity, String.class);
         log.debug("getuserphonenumber response: {}", resp);
 
         try {
