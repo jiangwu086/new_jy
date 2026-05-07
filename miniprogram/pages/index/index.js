@@ -5,23 +5,42 @@ Page({
     isLogin: false,
     isVerified: false,
     nearbyLocations: [],
+    notice: '暂无公告~',   // 默认占位文案，拉到真实公告后会被覆盖
     loading: true
   },
 
   onLoad() {
     this.loadLocations()
+    this.loadNotice()
   },
 
   onShow() {
     this.refreshUserStatus()
     // 每次回到首页都刷新打卡点列表，确保后台改完立刻生效
     this.loadLocations()
+    this.loadNotice()
   },
 
   onPullDownRefresh() {
     this.refreshUserStatus()
     this.loadLocations()
+    this.loadNotice()
     setTimeout(() => wx.stopPullDownRefresh(), 1200)
+  },
+
+  /**
+   * 拉取最新一条已发布公告（type=1 政策说明，按时间倒序取第一条）。
+   * 拉不到 / 接口失败时保持默认 '暂无公告~'，不报错。
+   */
+  loadNotice() {
+    get('/api/v1/articles', { type: 1 }, { noRetry: true, noAuth: true })
+      .then(res => {
+        const list = res.data || []
+        if (list.length > 0 && list[0].title) {
+          this.setData({ notice: list[0].title })
+        }
+      })
+      .catch(() => { /* 静默失败，保持默认占位文案 */ })
   },
 
   loadLocations() {

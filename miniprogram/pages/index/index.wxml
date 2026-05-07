@@ -52,7 +52,7 @@
   <!-- 公告 -->
   <view class="home-notice" bindtap="goToNotice">
     <view class="notice-tag">公告</view>
-    <text class="notice-text">济南市历下区新增5个安全教育点位，欢迎前往打卡体验...</text>
+    <text class="notice-text">{{notice}}</text>
   </view>
 
   <!-- 附近教育点 -->
