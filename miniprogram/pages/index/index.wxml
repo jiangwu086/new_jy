@@ -9,7 +9,7 @@
 
   <!-- Banner -->
   <view class="home-banner">
-    <image class="banner-image" src="/images/home_banner_ai.png" mode="aspectFill"></image>
+    <image class="banner-image" src="/images/home_banner_ai.jpg" mode="aspectFill"></image>
   </view>
 
   <!-- 实名认证提醒 -->
