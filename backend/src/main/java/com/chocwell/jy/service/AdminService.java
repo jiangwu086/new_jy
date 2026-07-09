@@ -31,7 +31,9 @@ public class AdminService {
     // ─── 管理员登录 ───────────────────────────────────────────
 
     /**
-     * 管理员账密登录，返回 token
+     * 平台管理员账密登录（SUPER_ADMIN / ADMIN / OPERATOR），返回 token。
+     * 机构管理员（ORG_ADMIN）必须从 /api/v1/org/login 登录，
+     * 不能在平台后台登录，否则会拿到全平台权限。
      */
     public Map<String, Object> login(String username, String password) {
         SysAdmin admin = adminMapper.findByUsername(username);
@@ -40,6 +42,10 @@ public class AdminService {
         }
         if (!passwordEncoder.matches(password, admin.getPasswordHash())) {
             throw new IllegalArgumentException("密码错误");
+        }
+        // 机构管理员必须走机构端登录，禁止从平台后台登录拿全平台权限
+        if ("ORG_ADMIN".equals(admin.getRole())) {
+            throw new IllegalArgumentException("机构管理员请通过机构管理端登录");
         }
 
         // 更新最后登录时间

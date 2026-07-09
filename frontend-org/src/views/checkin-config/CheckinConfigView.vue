@@ -48,18 +48,26 @@
 
       <h4 style="margin:0 0 12px;color:#1a2332">当前生效配置</h4>
       <el-table :data="effective" border size="small" style="max-width:680px">
-        <el-table-column prop="key"      label="配置项"   min-width="180" />
-        <el-table-column prop="orgValue" label="机构值"   width="120">
+        <el-table-column label="配置项" min-width="200">
           <template #default="{ row }">
-            <span v-if="row.orgValue">{{ row.orgValue }}</span>
+            {{ KEY_LABELS[row.key] || row.key }}
+          </template>
+        </el-table-column>
+        <el-table-column label="机构值" width="120">
+          <template #default="{ row }">
+            <span v-if="row.orgValue">{{ formatVal(row.key, row.orgValue) }}</span>
             <span v-else style="color:#9ca3af">—</span>
           </template>
         </el-table-column>
-        <el-table-column prop="globalValue" label="平台默认" width="120" />
-        <el-table-column prop="effective"   label="实际生效" width="120">
+        <el-table-column label="平台默认" width="120">
+          <template #default="{ row }">
+            {{ formatVal(row.key, row.globalValue) }}
+          </template>
+        </el-table-column>
+        <el-table-column label="实际生效" width="120">
           <template #default="{ row }">
             <el-tag :type="row.orgValue ? 'success' : 'info'" size="small">
-              {{ row.effective }}
+              {{ formatVal(row.key, row.effective) }}
             </el-tag>
           </template>
         </el-table-column>
@@ -72,6 +80,23 @@
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
 import { getCheckinConfig, updateCheckinConfig } from '@/api/index.js'
+
+// 后端返回的 key 是数据库列名（英文），表格里展示成中文，方便机构管理员看
+const KEY_LABELS = {
+  points_per_checkin:      '单次打卡积分',
+  max_checkins_per_period: '周期内打卡次数上限',
+  current_period_type:     '周期类型'
+}
+// current_period_type 的值也是英文枚举，表格里同步翻成中文
+const PERIOD_LABELS = {
+  MONTH:   '按月',
+  QUARTER: '按季度'
+}
+function formatVal(key, value) {
+  if (value == null || value === '') return value
+  if (key === 'current_period_type') return PERIOD_LABELS[value] || value
+  return value
+}
 
 const loading = ref(false)
 const saving  = ref(false)

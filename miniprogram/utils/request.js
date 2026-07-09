@@ -19,13 +19,13 @@ const DEV_URL = platform === 'devtools'
   ? 'http://127.0.0.1:8080'
   : 'http://192.168.31.114:8080';   // ← 真机调试时改成 Mac 当前局域网 IP
 
-// ⚠️ 上线前必须把 PROD_URL 替换为真实的 HTTPS 域名（体验版/正式版都用它）
-//   1) 后端必须部署到公网，配好 HTTPS 证书（微信要求 TLS 1.2+）
-//   2) 在微信公众平台「开发-开发管理-服务器域名」配置：
-//      request合法域名:    https://你的域名
-//      uploadFile合法域名: https://你的域名
-//      downloadFile合法域名: https://你的域名
-const PROD_URL = 'https://your-api-domain.com';
+// 生产域名 — 已部署到 36.143.196.178，nginx 反代 + DigiCert HTTPS 证书
+// 公网 443 被其他服务占用，改走自定义端口 18443
+// ⚠️ 微信公众平台「开发-开发管理-服务器域名」必须把以下三项都配上 jysafety.yaozhifang.com:18443：
+//   request合法域名:     https://jysafety.yaozhifang.com:18443
+//   uploadFile合法域名:  https://jysafety.yaozhifang.com:18443
+//   downloadFile合法域名: https://jysafety.yaozhifang.com:18443
+const PROD_URL = 'https://jysafety.yaozhifang.com:18443';
 
 // envVersion === 'develop' → 用本机/局域网（仅开发者工具/Mac 调试）
 // envVersion === 'trial' / 'release' → 体验版和正式版都连线上 HTTPS 域名

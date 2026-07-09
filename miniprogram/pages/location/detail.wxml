@@ -1,11 +1,4 @@
 <view class="container" wx:if="{{!loading && location}}">
-  <!-- 点位状态横幅 -->
-  <view class="loc-banner">
-    <view class="status-badge {{location.isOpen ? 'open' : 'closed'}}">
-      {{location.isOpen ? '开放中' : '暂停服务'}}
-    </view>
-  </view>
-
   <view class="loc-header">
     <view class="loc-title">{{location.name}}</view>
     <view class="loc-tags">

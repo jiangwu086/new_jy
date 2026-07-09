@@ -51,6 +51,7 @@ Page({
     // 从接口拉取最新数据（含 realName/isVerified，防止换设备/重装后状态丢失）
     get('/api/v1/user/me').then(res => {
       const user = res.data
+      console.log('[profile] /api/v1/user/me 返回:', user)
       const isVerified = user.verifyStatus === 2
 
       // 全量覆盖本地缓存，防止账号切换后数据残留
@@ -154,12 +155,17 @@ Page({
     })
   },
 
-  // ── 换绑手机号 ────────────────────────────────────────────
+  // ── 换绑/绑定手机号 ───────────────────────────────────────
   showChangePhone() {
     this.setData({ showPhoneModal: true, newPhone: '', newPhoneCode: '' })
   },
   hideChangePhone() {
     this.setData({ showPhoneModal: false })
+  },
+  // 拦截弹窗内部的点击事件冒泡，防止触发 mask 的 hideChangePhone。
+  // catchtap="" 在新版微信基础库下不再作为占位生效，必须给个真实方法名。
+  onModalBoxTap() {
+    /* 仅用于阻止冒泡，无业务逻辑 */
   },
   onNewPhoneInput(e)  { this.setData({ newPhone: e.detail.value }) },
   onNewCodeInput(e)   { this.setData({ newPhoneCode: e.detail.value }) },

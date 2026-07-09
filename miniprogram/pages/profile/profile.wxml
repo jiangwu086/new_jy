@@ -15,7 +15,7 @@
       <view class="profile-name">{{realName || nickName || '骑手用户'}}</view>
       <view class="profile-phone" bindtap="showChangePhone">
         <text>{{phone || '未绑定手机号'}}</text>
-        <text class="phone-edit-hint">换绑</text>
+        <text class="phone-edit-hint">{{phone ? '换绑' : '去绑定'}}</text>
       </view>
       <!-- 认证状态标签 -->
       <view class="auth-badge verified" wx:if="{{verifyStatus === 2}}">
@@ -114,10 +114,10 @@
     <button class="logout-btn" bindtap="logout">退出登录</button>
   </view>
 
-  <!-- 换绑手机号弹窗 -->
+  <!-- 换绑/绑定手机号弹窗 -->
   <view class="modal-mask" wx:if="{{showPhoneModal}}" bindtap="hideChangePhone">
-    <view class="modal-box" catchtap="">
-      <view class="modal-title">更换手机号</view>
+    <view class="modal-box" catchtap="onModalBoxTap">
+      <view class="modal-title">{{phone ? '更换手机号' : '绑定手机号'}}</view>
 
       <!-- 手机号输入框 -->
       <view class="modal-input-box">
@@ -138,7 +138,7 @@
       <!-- 操作按钮 -->
       <view class="modal-actions">
         <button class="modal-cancel" bindtap="hideChangePhone">取消</button>
-        <button class="modal-confirm" bindtap="confirmChangePhone">确认换绑</button>
+        <button class="modal-confirm" bindtap="confirmChangePhone">{{phone ? '确认换绑' : '确认绑定'}}</button>
       </view>
     </view>
   </view>

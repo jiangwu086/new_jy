@@ -76,6 +76,28 @@
   font-weight: 600;
 }
 
+/* 审核中：蓝色色调，提示等待 */
+.auth-reminder.pending {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+.auth-reminder.pending .auth-reminder-title { color: #1e3a8a; }
+.auth-reminder.pending .auth-reminder-desc  { color: #1d4ed8; }
+.auth-reminder-action.pending {
+  background: #3b82f6;
+}
+
+/* 已拒绝：红色色调，需要重新提交 */
+.auth-reminder.rejected {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+.auth-reminder.rejected .auth-reminder-title { color: #991b1b; }
+.auth-reminder.rejected .auth-reminder-desc  { color: #b91c1c; }
+.auth-reminder-action.rejected {
+  background: #ef4444;
+}
+
 /* Grid */
 .home-grid {
   display: flex;

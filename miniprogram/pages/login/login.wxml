@@ -8,7 +8,7 @@
 
   <!-- 顶部 Hero 图 -->
   <view class="hero-wrap">
-    <image class="hero" src="/images/login_hero_ai.png" mode="aspectFill"/>
+    <image class="hero" src="/images/login_hero_ai.jpg" mode="aspectFill"/>
     <view class="hero-mask-top"></view>
     <view class="hero-mask-bottom"></view>
   </view>
